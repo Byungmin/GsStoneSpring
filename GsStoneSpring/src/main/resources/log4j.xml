@@ -17,7 +17,7 @@
 
 	
 	<!-- Application Loggers -->
-	<logger name="net.gsstone.app" additivity="false">
+	<logger name="gs" additivity="false">
 		<level value="debug" />
 		<appender-ref ref="console"/>
 	</logger>
