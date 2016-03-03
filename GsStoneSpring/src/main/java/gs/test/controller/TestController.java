@@ -10,10 +10,10 @@ public class TestController {
 	Logger log = Logger.getLogger(this.getClass());
 	
 	
-	@RequestMapping(value="/testcontroller.gs")
+	@RequestMapping(value="/home.gs")
 	public String testController() throws Exception{
 		log.debug("intercepter Test ");
-		return "test";
+		return "/customView/item";
 	}
 	
 }

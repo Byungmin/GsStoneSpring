@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+#loginWrap{
+	margin-left:10px;
+	margin-top:10px;
+	padding-top:20px;
+	width:350px;
+	height:150px;
+	border: 1px solid black;
+}
+h3{
+	margin-left: 10px;
+}
+#loginWrap table{
+	padding-left: 20px;
+}
+#loginWrap table td{
+	border-bottom: 1px solid black;
+	border-collapse: collapse;
+}
+input{
+	width: 200px;
+	height: 20px;
+}
+#login{
+	margin-top:10px;
+	margin-left:20px;
+	width: 300px;
+	height: 30px;
+	border: 1px solid gray;
+}
