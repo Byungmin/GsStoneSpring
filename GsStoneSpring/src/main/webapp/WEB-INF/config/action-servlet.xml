@@ -11,6 +11,14 @@
 
 	<context:component-scan base-package="gs" />
 
+
+	<!-- CustomMapArgumentResolver -->
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean class="gs.common.resolver.CustomMapArgumentResolver"></bean>       
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+
 	<!-- interceptors -->
     <mvc:interceptors>
         <mvc:interceptor>
