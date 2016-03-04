@@ -42,9 +42,12 @@
 		</div>
 	</div>
 	</div><!-- wrap 끝 -->
-	
 	<!-- footer -->
 		<jsp:include page="../include/footer.jsp" />
 	<!-- footer 끝 -->
+<%@ include file="/WEB-INF/jsp/include/include-body.jspf" %>
+<script>
+
+</script>
 </body>
 </html>
