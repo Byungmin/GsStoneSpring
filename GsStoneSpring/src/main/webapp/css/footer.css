@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+
+#footer {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #474747;
+	padding: 30px 0;
+}
+
+.footer_wrap {
+	position: relative;
+	width: 1016px;
+	height: 63px;
+	margin: 0 auto;
+}
+
+.footlogo {
+	float: left;
+	width: 138px;
+	height: 50px;
+	margin: 0 0 0 28px;
+	background: url("../img/footerlogo.png") no-repeat center;
+	background-size: 137px 40px;
+}
+
+.fttext {
+	float: left;
+	width: 500px;
+	height: 50px;
+	font-size: 12px;
+	color: white;
+	display: table;
+}
+
+.fttext table {
+	padding-left: 30px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.employee {
+	position: absolute;
+	top: 19px;
+	right: 28px;
+	width: 160px;
+	height: 30px;
+	color: white;
+}
+
+.employee select {
+	border: 1px solid white;
+	width: 150px;
+	background-color: #474747;
+	color: white;
+}
+.fttext a{
+	color:white;
+}
+.fttext a:HOVER{
+	font-weight: bold;
+}
+

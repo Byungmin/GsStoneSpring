@@ -3,83 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
-<link href="../css/view.css" rel="stylesheet" type="text/css">
-
-<title>GS STONE&BRICK</title>
-<style type="text/css">
-#intro_text{
-		padding: 20px;
-}
-#intro_text h1{
-	color: #BD0B26;
-}
-#boardTableWrap{
-	margin:20px;
-	width: 650px;
-	min-height: 400px;
-	height: auto;
-}
-#boardTableWrap table{
-	margin-top:40px;	
-	margin-left: 20px;
-	border-top: 1px solid #d0d0d0;
-	border-bottom: 1px solid #d0d0d0;
-	padding: 20px 50px;
-}
-#boardTableWrap table tr{
-}
-#boardTableWrap table td{
-	min-height: 40px;
-	height: auto;
-	font-size: 1.2em;
-}
-#boardTableWrap table td:nth-child(1){
-	width: 100px;
-}
-#boardTableWrap table td:nth-child(2){
-	width: 500px;
-}
-.inputstyle{
-	border:1px solid #d0d0d0;
-	width: 375px;
-	height: 30px;
-	font-size: 1.1em;
-}
-.textareastyle{
-	border: 1px solid #d0d0d0;
-}
-.filestyle{
-	width: 375px;
-}
-#customerBtn{
-	background-color: #e8e8e8;
-	border: 1px solid #777;
-	padding: 5px 20px;
-	margin: 10px 275px;
-	float: right;
-}
-
-</style>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#customerBtn").click(function(){
-			var name=$("input[name='customerName']").val();
-			var contact=$("input[name='customerContact']").val();
-			var subject=$("input[name='customerSubject']").val();
-			if(name!="" && contact!=""&& subject!=""){
-				$('#customerfr').submit();
-			}else{
-				alert("필수 입력 사항을 확인해 주세요. ");	
-			}
-		});
-	});
-</script>
-
+<%@ include file="/WEB-INF/jsp/include/include-header.jspf" %>
+<link href="./css/customer.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<!-- header -->
@@ -89,6 +14,7 @@
 	<div id="wrap">
 		<div id="viewbody">
 		<div id="view_side">
+		<!-- 하드코딩 -->
 			<ul class="view_side_intro">
 				<li><h1>고객센터</h1></li>
 				<li><br></li>
