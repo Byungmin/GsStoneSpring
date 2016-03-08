@@ -34,8 +34,8 @@
 	
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+<!-- 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/> -->
+<!-- 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> -->
     
 
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />

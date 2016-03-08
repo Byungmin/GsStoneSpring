@@ -7,6 +7,7 @@ import gs.common.common.CommandMap;
 import gs.web.qna.service.QnaService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,8 @@ public class QnaController {
 	
 	
 	@RequestMapping(value="/qna/insertQna.gs")
-	public String insertQna(CommandMap map){
-		qnaService.insertQna(map.getMap());
+	public String insertQna(CommandMap map, HttpServletRequest request) throws Exception{
+		qnaService.insertQna(map.getMap(),request);
 		return "redirect:/item.gs";
 	}
 	

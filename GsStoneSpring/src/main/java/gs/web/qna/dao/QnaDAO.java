@@ -3,7 +3,6 @@ package gs.web.qna.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import gs.common.dao.AbstractDAO;
@@ -16,8 +15,12 @@ public class QnaDAO extends AbstractDAO{
 		return (List<Map<String, Object>>)selectList("qna.selectQnaList", map);
 	}
 
-	public void insertQna(Map<String, Object> map) {
+	public void insertQna(Map<String, Object> map)throws Exception {
 		insert("qna.insertQna", map);
+	}
+
+	public void insertFile(Map<String, Object> map)throws Exception {
+		insert("qna.insertFile",map);
 	}
 
 }

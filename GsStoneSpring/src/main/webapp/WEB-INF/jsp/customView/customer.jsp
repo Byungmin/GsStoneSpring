@@ -25,7 +25,7 @@
 		<div id="intro_text">
 		<h1>문의하기</h1>
 			<div id="boardTableWrap">
-			<form id="customerfr">
+			<form id="customerfr" name="customerfr" enctype="multipart/form-data">
 				<table>
 					<tr><td>이름</td><td><input type="text" name="CREA_ID" class="inputstyle"></input></td></tr>
 					<tr><td>연락처</td><td><input type="text" name="customerContact" class="inputstyle"></input></td></tr>
@@ -33,7 +33,7 @@
 					<tr><td>내용</td><td><textarea rows="15" cols="45" name="CONTENTS" class="textareastyle"></textarea></td></tr>
 					
 					
-<!-- 					<tr><td>첨부파일1</td><td><input type="file" name="customerfile1" class="filestyle"></input></td></tr> -->
+					<tr><td>첨부파일1</td><td><input type="file" name="customerfile1" class="filestyle"></input></td></tr>
 <!-- 					<tr><td>첨부파일2</td><td><input type="file" name="customerfile2" class="filestyle"></input></td></tr> -->
 <!-- 					<tr><td>첨부파일3</td><td><input type="file" name="customerfile3" class="filestyle"></input></td></tr> -->
 				</table>

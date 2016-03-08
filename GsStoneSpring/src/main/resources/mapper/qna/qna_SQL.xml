@@ -18,7 +18,8 @@
     </select>
      
      
-    <insert id="insertQna" parameterType="hashmap">
+    <insert id="insertQna" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+    
     	<![CDATA[
     		INSERT INTO QNA_BOARD
     		(
@@ -35,7 +36,28 @@
     			#{CREA_ID}
     		)
     	]]>
-    
-    
     </insert>
+    <insert id="insertFile" parameterType="list">
+		<![CDATA[
+			INSERT INTO QNA_FILE
+			(
+				BOARD_IDX,
+				ORIGINAL_FILE_NAME,
+				STORED_FILE_NAME,
+				FILE_SIZE,
+				CREA_ID
+			)
+			VALUES
+			(
+				#{BOARD_IDX},
+				#{ORIGINAL_FILE_NAME},
+				#{STORED_FILE_NAME},
+				#{FILE_SIZE},
+				#{CREA_ID}
+			)
+		]]>    
+    </insert>
+    
 </mapper>
+
+
