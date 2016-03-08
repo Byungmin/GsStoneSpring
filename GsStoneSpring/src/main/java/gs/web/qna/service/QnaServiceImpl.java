@@ -22,6 +22,14 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDAO.selectQnaList(map);
 	}
 
+	@Override
+	public void insertQna(Map<String, Object> map) {
+		qnaDAO.insertQna(map);
+		
+	}
+	
+	
+
 	
 	
 }

@@ -8,14 +8,34 @@
             SELECT
                 IDX,
                 TITLE,
-                HIT_CNT,
                 CREA_DTM
             FROM
-                TB_BOARD
+                QNA_BOARD
             WHERE
                 DEL_GB = 'N'
             ORDER BY IDX DESC
         ]]>
     </select>
      
+     
+    <insert id="insertQna" parameterType="hashmap">
+    	<![CDATA[
+    		INSERT INTO QNA_BOARD
+    		(
+    			TITLE,
+    			CONTENTS,
+    			customerContact,
+    			CREA_ID
+    		)
+    		VALUES
+    		(
+    			#{TITLE},
+    			#{CONTENTS},
+    			#{customerContact},
+    			#{CREA_ID}
+    		)
+    	]]>
+    
+    
+    </insert>
 </mapper>

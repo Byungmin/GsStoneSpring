@@ -41,7 +41,7 @@
                 </tr>
             </c:otherwise>
         </c:choose>
-         
+         <li><a href="../item.gs">제품소개</a></li>
     </tbody>
 </table>
 </body>

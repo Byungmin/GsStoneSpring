@@ -3,6 +3,7 @@ package gs.web.qna.controller;
 import java.util.List;
 import java.util.Map;
 
+import gs.common.common.CommandMap;
 import gs.web.qna.service.QnaService;
 
 import javax.annotation.Resource;
@@ -19,6 +20,13 @@ public class QnaController {
 	
 	@Resource(name="qnaService")
 	private QnaService qnaService;
+	
+	
+	@RequestMapping(value="/qna/insertQna.gs")
+	public String insertQna(CommandMap map){
+		qnaService.insertQna(map.getMap());
+		return "redirect:/item.gs";
+	}
 	
 	@RequestMapping(value="/admin/openQnaList.gs")
 	public ModelAndView openQnaList(Map<String, Object> commandMap)throws Exception{

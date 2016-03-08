@@ -8,6 +8,8 @@ public interface QnaService {
 
 	List<Map<String, Object>> selectQnaList(Map<String, Object> commandMap) throws Exception;
 
+	void insertQna(Map<String, Object> map);
+
 	
 	
 }
