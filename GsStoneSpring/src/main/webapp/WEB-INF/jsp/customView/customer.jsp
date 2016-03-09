@@ -32,12 +32,18 @@
 					<tr><td>제목</td><td><input type="text" name="TITLE" class="inputstyle"></input></td></tr>
 					<tr><td>내용</td><td><textarea rows="15" cols="45" name="CONTENTS" class="textareastyle"></textarea></td></tr>
 					
-					
-					<tr><td>첨부파일1</td><td><input type="file" name="customerfile1" class="filestyle"></input></td></tr>
-<!-- 					<tr><td>첨부파일2</td><td><input type="file" name="customerfile2" class="filestyle"></input></td></tr> -->
-<!-- 					<tr><td>첨부파일3</td><td><input type="file" name="customerfile3" class="filestyle"></input></td></tr> -->
+					<tr><td></td><td>
+						<div id="fileDiv">
+						<p><input type="file" id="file" name="file_0" class="filestyle">
+						<a href="#this" class="btn" id="delete" name="delete">삭제</a></p>
+						</div>
+					</td></tr>	
+				
 				</table>
+				
+				<a href="#this" class="btn" id="addFile">파일 추가</a>
 			</form>
+				
 				<button id="customerBtn">문의하기</button>
 			</div>
 		</div>
@@ -48,6 +54,7 @@
 	<!-- footer 끝 -->
 <%@ include file="/WEB-INF/jsp/include/include-body.jspf" %>
 	<script type="text/javascript">
+	 var gfv_count = 1;
 		$(document).ready(function(){
 			$("#customerBtn").on("click", function(e){
 				e.preventDefault();
@@ -55,7 +62,28 @@
 				comSubmit.setUrl("<c:url value='/qna/insertQna.gs'/>");
 				comSubmit.submit();
 			});
+			$("#addFile").on("click", function(e){ //파일 추가 버튼
+                e.preventDefault();
+                fn_addFile();
+            });
+			 $("a[name='delete']").on("click", function(e){ //삭제 버튼
+	                e.preventDefault();
+	                fn_deleteFile($(this));
+	            });
+			
 		});
+		
+		function fn_addFile(){
+            var str = "<p><input type='file' class='filestyle' name='file_"+(gfv_count++)+"'> <a href='#this' class='btn' name='delete'>삭제</a></p>";
+            $("#fileDiv").append(str);
+            $("a[name='delete']").on("click", function(e){ //삭제 버튼
+                e.preventDefault();
+                fn_deleteFile($(this));
+            });
+        }
+		function fn_deleteFile(obj){
+            obj.parent().remove();
+        }
 	</script>
 </body>
 </html>
