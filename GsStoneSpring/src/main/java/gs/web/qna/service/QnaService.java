@@ -12,6 +12,8 @@ public interface QnaService {
 
 	void insertQna(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
+	Map<String, Object> selectQnaDetail(Map<String, Object> map)throws Exception;
+
 
 	
 	

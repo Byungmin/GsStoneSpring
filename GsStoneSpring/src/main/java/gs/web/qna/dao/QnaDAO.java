@@ -23,4 +23,14 @@ public class QnaDAO extends AbstractDAO{
 		insert("qna.insertFile",map);
 	}
 
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectQnaDetail(Map<String, Object> map)throws Exception {
+		return (Map<String, Object>) selectOne("qna.selectQnaDetail", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectQnaFile(Map<String, Object> map)throws Exception {
+		return (List<Map<String,Object>>)selectList("qna.selectFileList", map); 
+	}
+
 }

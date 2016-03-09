@@ -16,6 +16,33 @@
             ORDER BY IDX DESC
         ]]>
     </select>
+    <select id="selectQnaDetail" parameterType="hashmap" resultType="hashmap">
+    		<![CDATA[
+			SELECT 
+				*
+    		FROM
+    			QNA_BOARD
+    		WHERE
+    			IDX = #{IDX}
+    		AND
+    			DEL_GB = 'N'
+    	]]>
+    
+    </select>
+    <select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+    	<![CDATA[
+			SELECT 
+				IDX,
+				ORIGINAL_FILE_NAME,    	
+    			ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+    		FROM
+    			QNA_FILE
+    		WHERE
+    			BOARD_IDX = #{IDX}
+    		AND
+    			DEL_GB = 'N'
+    	]]>
+    </select>
      
      
     <insert id="insertQna" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">

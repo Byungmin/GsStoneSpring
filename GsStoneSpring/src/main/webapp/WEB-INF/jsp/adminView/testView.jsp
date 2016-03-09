@@ -19,7 +19,6 @@
         <tr>
             <th scope="col">글번호</th>
             <th scope="col">제목</th>
-            <th scope="col">조회수</th>
             <th scope="col">작성일</th>
         </tr>
     </thead>
@@ -29,8 +28,7 @@
                 <c:forEach items="${list }" var="row">
                     <tr>
                         <td>${row.IDX }</td>
-                        <td>${row.TITLE }</td>
-                        <td>${row.HIT_CNT }</td>
+                        <td><a href="/admin/openQnaDetail.gs?IDX=${row.IDX}">${row.TITLE }</a></td>
                         <td>${row.CREA_DTM }</td>
                     </tr>
                 </c:forEach>

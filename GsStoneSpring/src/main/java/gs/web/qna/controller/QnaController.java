@@ -23,10 +23,23 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	
+	//문의글 저장
 	@RequestMapping(value="/qna/insertQna.gs")
 	public String insertQna(CommandMap map, HttpServletRequest request) throws Exception{
 		qnaService.insertQna(map.getMap(),request);
 		return "redirect:/item.gs";
+	}
+	
+	//문의글 읽기
+	@RequestMapping(value="/admin/openQnaDetail.gs")
+	public ModelAndView openQnaDetail(CommandMap commandMap)throws Exception{
+		ModelAndView mv = new ModelAndView("/adminView/testQnaDetail");
+		
+		Map<String, Object> map = qnaService.selectQnaDetail(commandMap.getMap());
+		
+		mv.addObject("map", map.get("map"));
+		mv.addObject("list", map.get("list"));
+		return mv;
 	}
 	
 	@RequestMapping(value="/admin/openQnaList.gs")

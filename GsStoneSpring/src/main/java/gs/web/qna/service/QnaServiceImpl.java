@@ -3,6 +3,7 @@ package gs.web.qna.service;
 import gs.common.util.FileUtils;
 import gs.web.qna.dao.QnaDAO;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,21 @@ public class QnaServiceImpl implements QnaService {
 			qnaDAO.insertFile(list.get(i));
 		}
 	}
+
+	@Override
+	public Map<String, Object> selectQnaDetail(Map<String, Object> map)throws Exception {
+		
+		Map<String, Object>resultMap = new HashMap<String, Object>();
+		Map<String, Object>tempMap = qnaDAO.selectQnaDetail(map);
+		resultMap.put("map", tempMap);
+		
+		List<Map<String, Object>> fileList = qnaDAO.selectQnaFile(map);
+		resultMap.put("list", fileList);
+		
+		
+		return resultMap;
+	}
+	
 	
 	
 
