@@ -18,7 +18,8 @@
 			<ul class="view_side_intro">
 				<li><h1>고객센터</h1></li>
 				<li><br></li>
-				<li><a href="../GsStone/customer.gs">문의하기</a></li>
+				<li><a href="/customer.gs">문의하기</a></li>
+				<li><a href="/login.gs">직원페이지</a></li>
 			</ul>
 		</div>
 		
@@ -38,10 +39,8 @@
 						<a href="#this" class="btn" id="delete" name="delete">삭제</a></p>
 						</div>
 					</td></tr>	
-				
+					<tr><td></td><td><a href="#this" class="btn" id="addFile">파일 추가</a></td></tr>
 				</table>
-				
-				<a href="#this" class="btn" id="addFile">파일 추가</a>
 			</form>
 				
 				<button id="customerBtn">문의하기</button>

@@ -28,3 +28,8 @@ h3{
 	width: 1000px;
 	height: auto;
 }
+button{
+	background-color: #e8e8e8;
+	border: 1px solid #777;
+	padding: 5px 20px;
+}

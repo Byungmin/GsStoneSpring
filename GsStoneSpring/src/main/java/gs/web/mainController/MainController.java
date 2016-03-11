@@ -22,6 +22,14 @@ public class MainController {
 		return "/customView/customer";
 	}
 	
+	//직원로그인 페이지
+	@RequestMapping(value="/login.gs")
+	public String adminLogin()throws Exception{
+		return "/adminView/adminLogin";
+	}
+	
+
+	
 	
 	
 }//

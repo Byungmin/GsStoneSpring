@@ -30,6 +30,9 @@ public class QnaController {
 		return "redirect:/item.gs";
 	}
 	
+	
+	
+	
 	//문의글 읽기
 	@RequestMapping(value="/admin/openQnaDetail.gs")
 	public ModelAndView openQnaDetail(CommandMap commandMap)throws Exception{
