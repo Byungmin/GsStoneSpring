@@ -28,23 +28,25 @@
 					<td>123</td>
 					<td>1313</td>
 				</tr>
-				<tr>
-					<td>1,002</td>
-					<td>amet</td>
-					<td>consectetur</td>
-					<td>adipiscing</td>
-					<td>elit</td>
-				</tr>
-				<tr>
-					<td>1,003</td>
-					<td>Integer</td>
-					<td>nec</td>
-					<td>odio</td>
-					<td>Praesent</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
+<form name="pageInfo" id="pageInfo">
+	<input type="hidden" name="pageNo" value="1" />
+</form>
+<script>
+	$(document).ready(function(){
+	console.log("customerPage");
+	var url = "/admin/openCustomerQna.gs";
+	var formData = $("#pageInfo").serializeArray();
+	console.log(formData);
+		$.post(url,formData,
+			function(data){
+			
+		}).fail(function(){
+			
+		});
+	});
 
-
+</script>

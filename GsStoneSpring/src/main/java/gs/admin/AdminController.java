@@ -75,5 +75,10 @@ public class AdminController {
 	}
 	
 	
+	@RequestMapping(value="/openCustomerQna.gs")
+	public List<Map<String, Object>> openCustomerQna(List list){
+		//이슈 : param을 어떻게 받아서 어떻게 데이터를 뽑을 것이냐
+		return list;
+	}
 	
 }
