@@ -21,14 +21,12 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDAO adminDAO;
 	
 	@Override
-	public Map<String, Object> openIntro() {
+	public List<Map<String, Object>> openIntro() {
 		
-		Map<String, Object>resultMap = new HashMap<String, Object>();
 		List<Map<String, Object>> list = adminDAO.openIntro(); 
 		
-		resultMap.put("list", list);
 		
-		return resultMap;
+		return list;
 	}
 
 	

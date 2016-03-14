@@ -6,8 +6,10 @@ import gs.admin.service.AdminService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,23 +67,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/openIntro.gs")
-	public void openIntro(HttpServletResponse res, Model model) throws IOException{
-		
-		JSONObject joj = new JSONObject();
-		
-		Map<String, Object> testMap = new HashMap<String, Object>();
-		
-		testMap = adminService.openIntro();
-		
-		joj.put("test", testMap);
-		
-		Writer out = res.getWriter();
-		out.write("test");
-		out.write(joj.toJSONString());
-		out.flush();
-		out.close();
-		
-		
+	@ResponseBody
+	public List<Map<String, Object>> openIntro() throws IOException{
+		List<Map<String, Object>> resultList = new ArrayList<Map<String,Object>>();
+		resultList = adminService.openIntro();
+		return resultList;
 	}
 	
 	

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/jsp/include/bootstrap-includ-header.jspf" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/jsp/include/bootstrap-includ-header.jspf"%>
 
 <!--  template frame div  -->
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -16,76 +17,84 @@
 		<div class="text-center">
 			<!-- 글 가운데 정렬 -->
 			<div class="row placeholders">
-
-				<c:choose>
-					<c:when test="${not empty null}">
-						<p>안빈화면</p>
-					</c:when>
-					<c:otherwise>
-						<div class="col-xs-6 col-sm-3 placeholder">
-							<img
-								src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-								width="400" height="400" class="img-responsive"
-								alt="Generic placeholder thumbnail">
-							<h4>빈화면</h4>
-							<span class="text-muted">게시중인 회사 소개글이 없습니다.</span>
-						</div>
-					</c:otherwise>
-				</c:choose>
+				<div class="col-xs-9 col-sm-0 placeholder">
+					<img
+						src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+						width="400" height="400" class="img-responsive"
+						alt="Generic placeholder thumbnail">
+					<h4>
+						<span id="showingDate">작성일 지정</span>
+					</h4>
+					<span class="text-muted"><span id="showingContext">글이
+							없습니다.</span></span>
+				</div>
 
 			</div>
 
 		</div>
 		<h3 class="sub-header">지난 회사소개 글</h3>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>글번호</th>
-					<th>제목</th>
-					<th>null</th>
-					<th>null</th>
-					<th>첨부파일</th>
-				</tr>
-			</thead>
-
-
-			<c:choose>
-				<c:when test="${not empty test.test1}">
+		<form>
+			<table class="table table-bordered" id="result">
+				<thead>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<th>글번호</th>
+						<th>작성일</th>
+						<th>작성자</th>
+						<th>첨부파일</th>
+						<th>글 미리보기</th>
+						<th>게시중</th>
 					</tr>
-				</c:when>
-				<c:otherwise>
-					<tbody>
-						<tr>
-							<td colspan="5"><p class="text-center">지난 회사소개 글이 없습니다. ${test.test1}</p></td>
-						</tr>
-					</tbody>
-				</c:otherwise>
-			</c:choose>
-		</table>
-			
-			<button id="test">ajax실험</button>
+				</thead>
+			</table>
+		</form>
 	</div>
 </div>
 
 <script>
-	$(document).ready(function(){
-		console.log("intro_adminPage");
-		
-		$.ajax({
-			type:"POST",
-			url:"/admin/openIntro.gs",
-			success:function(data){
-				console.log(data);
-			}			
-		});
-		
-	});
+	$(document)
+			.ready(
+					function() {
+						console.log("intro_adminPage");
 
+						$.ajax({
+							type : "POST",
+							url : "/admin/openIntro.gs",
+							success : displayResult,
+							error : function(data) {
+							}
+						});
+
+						function displayResult(data) {
+							var output = "<tbody>";
+							for (var i = 0; i < data.length; i++) {
+
+								//미리보기 글자수 50자로 요약
+								var contextInit = data[i].context;
+								contextInit = contextInit.substr(0, 49);
+
+								//게시중인 글 확인후 출력하기
+								if (data[i].showing === 'y') {
+									$("#showingDate").html(data[i].date);
+									$("#showingContext").html(data[i].context);
+								}
+
+								output += "<tr>";
+								output += "<td>" + data[i].num + "</td>";
+								output += "<td>" + data[i].date + "</td>";
+								output += "<td>" + data[i].id + "</td>";
+								output += "<td>" + data[i].picture + "</td>";
+								output += "<td><a href='#'>" + contextInit + "</a></td>";
+								output += "<td>"
+										+ "<input type='button'  class='btn btn-primary btn-sm' "
+										+ (data[i].showing === 'n' ? " value='게시하기'"
+												: "value='게시중인 글' disabled='disabled'")
+										+ +">" + "</td>";
+								output += "</tr>";
+								output += "<input type='hidden' value='"+data[i].num+"' />";
+							}
+							output += "</tbody>";
+							$("#result").append(output);
+						}
+					});
 </script>
 
