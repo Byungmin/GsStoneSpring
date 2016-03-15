@@ -12,6 +12,43 @@
     ]]>
 	</select>
 
+	<select id="openCustomer" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            qna_board
+    ]]>
+	</select>
+
+	<select id="detailCustomerQna" parameterType="string"
+		resultType="hashmap">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            qna_board
+       	WHERE
+       		IDX = #{IDX}
+    ]]>
+	</select>
+
+	<select id="fileCustomerQna" parameterType="string" resultType="hashmap">
+    <![CDATA[
+       SELECT
+            IDX,
+            ORIGINAL_FILE_NAME,
+            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+        FROM
+            qna_FILE
+        WHERE
+            BOARD_IDX = #{IDX}
+            AND DEL_GB = 'N'
+
+    ]]>
+	</select>
+
+
 
 
 </mapper>

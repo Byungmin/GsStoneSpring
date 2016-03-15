@@ -29,17 +29,22 @@ public class AdminServiceImpl implements AdminService {
 		return list;
 	}
 
+	@Override
+	public List<Map<String, Object>> openCustomerQna() {
+		return adminDAO.openCustomer();
+	}
+
+	@Override
+	public Map<String, Object> detailCustomerQna(String IDX) {
+		Map<String, Object>resultMap = new HashMap<String, Object>();
+		resultMap = adminDAO.detailCustomerQna(IDX);
+		List<Map<String, Object>>fileList = adminDAO.selectFileList(IDX);
+		resultMap.put("fileList", fileList);
+		
+		return resultMap;
+	}
+
 	
 	
-//	@Override
-//	public Map<String, Object> transParameter(Map<String, Object> parameterMap) {
-//		
-//		String page = (String) parameterMap.get("page");
-//		String method = (String) parameterMap.get("method");
-//		
-//		
-//		
-//		return null;
-//	}
 
 }

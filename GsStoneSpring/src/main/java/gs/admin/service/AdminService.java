@@ -9,4 +9,8 @@ public interface AdminService {
 
 	public List<Map<String, Object>> openIntro();
 
+	public List<Map<String, Object>> openCustomerQna();
+
+	public Map<String, Object> detailCustomerQna(String IDX);
+
 }

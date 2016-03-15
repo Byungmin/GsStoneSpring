@@ -2,6 +2,7 @@ package gs.admin;
 
 import gs.admin.domain.AdminVO;
 import gs.admin.service.AdminService;
+import gs.common.common.CommandMap;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,7 +23,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,7 +68,8 @@ public class AdminController {
 		mv.addObject(requestMav);
 		return mv;
 	}
-	
+
+	//회사소개
 	@RequestMapping(value="/openIntro.gs")
 	@ResponseBody
 	public List<Map<String, Object>> openIntro() throws IOException{
@@ -76,9 +80,19 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/openCustomerQna.gs")
-	public List<Map<String, Object>> openCustomerQna(List list){
-		//이슈 : param을 어떻게 받아서 어떻게 데이터를 뽑을 것이냐
-		return list;
+	@ResponseBody
+	public List<Map<String, Object>> openCustomerQna() throws IOException{
+		List<Map<String, Object>> resultList = new ArrayList<Map<String,Object>>();
+		resultList = adminService.openCustomerQna();
+		return resultList;
 	}
+	
+	//detailCustomerQna
+	@RequestMapping(value="/detailCustomerQna.gs")
+	@ResponseBody
+	public Map<String, Object> detailCustomerQna(@RequestParam String IDX){
+		return adminService.detailCustomerQna(IDX); 
+	} 
+	
 	
 }

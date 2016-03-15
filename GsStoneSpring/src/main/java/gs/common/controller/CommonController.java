@@ -29,17 +29,17 @@ public class CommonController {
 		String storedFileName = (String)map.get("STORED_FILE_NAME");
 		String originalFileName = (String)map.get("ORIGINAL_FILE_NAME");
 		
-		String filePath="C:\\dev\\file\\";//경로 설정하기
+		byte fileByte[] = FileUtils.readFileToByteArray(new File("C:\\dev\\file\\"+storedFileName));
 		
-		byte fileByte[] = FileUtils.readFileToByteArray(new File(filePath+storedFileName));
 		response.setContentType("application/octet-stream");
-		response.setContentLength(fileByte.length);
-		response.setHeader("Content-Disposition", "attachment; fileName=\""+URLEncoder.encode(originalFileName,"UTF-8")+"\";");
-		response.setHeader("Content-Transfer-Encoding", "binary");
-		response.getOutputStream().write(fileByte);
-		
-		response.getOutputStream().flush();
+	    response.setContentLength(fileByte.length);
+	    response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode(originalFileName,"UTF-8")+"\";");
+	    response.setHeader("Content-Transfer-Encoding", "binary");
+	    response.getOutputStream().write(fileByte);
+
+	    response.getOutputStream().flush();
 		response.getOutputStream().close();
+		
 	}
 	
 	
