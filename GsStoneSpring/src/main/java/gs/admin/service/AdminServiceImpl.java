@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import gs.admin.dao.AdminDAO;
 import gs.admin.domain.AdminVO;
+import gs.common.common.CommandMap;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -44,7 +45,9 @@ public class AdminServiceImpl implements AdminService {
 		return resultMap;
 	}
 
-	
-	
+	@Override
+	public void deleteQna(Map<String, Object> map) {
+		adminDAO.deleteQna(map);
+	}
 
 }

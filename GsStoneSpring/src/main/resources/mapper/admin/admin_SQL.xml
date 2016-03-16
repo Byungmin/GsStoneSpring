@@ -9,6 +9,7 @@
             *
         FROM
             intro
+        ORDER BY num DESC
     ]]>
 	</select>
 
@@ -18,6 +19,8 @@
             *
         FROM
             qna_board
+        WHERE del_gb = 'N'
+        ORDER BY idx DESC
     ]]>
 	</select>
 
@@ -48,8 +51,16 @@
     ]]>
 	</select>
 
-
-
+	<delete id="deleteQna" parameterType="hashmap">
+	<![CDATA[
+		UPDATE 
+			qna_board
+		SET
+			del_gb = 'Y'
+		WHERE
+			idx=#{IDX}
+	]]>
+	</delete>
 
 </mapper>
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import gs.common.common.CommandMap;
 import gs.common.dao.AbstractDAO;
 
 @SuppressWarnings("unchecked")
@@ -25,6 +26,10 @@ public class AdminDAO extends AbstractDAO {
 
 	public List<Map<String, Object>> selectFileList(String iDX) {
 		return (List<Map<String, Object>>)selectList("admin.fileCustomerQna", iDX);
+	}
+
+	public void deleteQna(Map<String, Object> commandMap) {
+		delete("admin.deleteQna", commandMap);
 	}
 
 

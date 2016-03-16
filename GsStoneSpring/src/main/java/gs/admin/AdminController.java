@@ -95,4 +95,10 @@ public class AdminController {
 	} 
 	
 	
+	//deleteCustomerQna
+	@RequestMapping(value="/deleteQna.gs")
+	public void deleteQna(CommandMap commandMap){
+		adminService.deleteQna(commandMap.getMap());
+	}
+	
 }
