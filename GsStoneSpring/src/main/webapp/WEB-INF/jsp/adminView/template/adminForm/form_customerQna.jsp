@@ -76,6 +76,7 @@
 						for (var i = 0; i < fileList.length; i++) {
 							output += "<p><a href='/common/downloadFile.gs?IDX=" + fileList[i].IDX + "' name='file'>"
 									+ fileList[i].ORIGINAL_FILE_NAME + "</a> (" + fileList[i].FILE_SIZE + "kb)</p>";
+							output += "<img src='/resources/upload/"+fileList[i].STORED_FILE_NAME+"' style='width:128px;height:128px;'>";
 						}
 						$("#fileList").append(output);
 					}

@@ -19,6 +19,7 @@
 			<div class="row placeholders">
 				<div class="col-xs-9 col-sm-0 placeholder">
 					<img
+					 	id="introNowShowingImg"
 						src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
 						width="400" height="400" class="img-responsive"
 						alt="Generic placeholder thumbnail">
@@ -76,6 +77,7 @@
 								if (data[i].showing === 'y') {
 									$("#showingDate").html(data[i].date);
 									$("#showingContext").html(data[i].context);
+									$("#introNowShowingImg").attr("src","/resources/upload/"+data[i].picture+"");
 								}
 
 								output += "<tr>";
@@ -85,16 +87,35 @@
 								output += "<td>" + data[i].picture + "</td>";
 								output += "<td><a href='#'>" + contextInit + "</a></td>";
 								output += "<td>"
-										+ "<input type='button'  class='btn btn-primary btn-sm' "
+										+ "<input type='button' name='showingBtn' class='btn btn-primary btn-sm' "
 										+ (data[i].showing === 'n' ? " value='게시하기'"
-												: "value='게시중인 글' disabled='disabled'")
-										+ +">" + "</td>";
+												: "value='게시중인 글' disabled='disabled'")+">" 
+												+"<input type='hidden' id='showingIDX' value='"+data[i].num+"'/>"
+												+"</td>";
 								output += "</tr>";
 								output += "<input type='hidden' value='"+data[i].num+"' />";
 							}
 							output += "</tbody>";
 							$("#result").append(output);
+							
+							$("input[name='showingBtn']").on("click", function(e) {
+								e.preventDefault();
+								fn_changeNowShowing($(this));
+							});
 						}
-					});
+
+				
+
+				//게시하기 클릭시
+				function fn_changeNowShowing(obj) {
+					var buttonIdx = obj.parent().find("#showingIDX").val();
+					console.log("buttonIDX = " + buttonIdx);
+					var changeNowShowingUrl = "/admin/introChangeNowShoing.gs";
+					var param = {"num": buttonIdx};
+					$.post(changeNowShowingUrl,param);
+					location.reload();
+				}
+
+			});
 </script>
 

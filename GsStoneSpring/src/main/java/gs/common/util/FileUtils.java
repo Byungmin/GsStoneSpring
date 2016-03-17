@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,9 +16,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component("fileUtils")
 public class FileUtils {
-	private static final String filePath = "C:\\dev\\file\\";
+	
 	
 	public List<Map<String, Object>> parseInsertFileInfo(Map<String, Object>map, HttpServletRequest request)throws Exception{
+		
+		String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
+		String filePath = contextRoot+"resources/upload/";
+
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 		

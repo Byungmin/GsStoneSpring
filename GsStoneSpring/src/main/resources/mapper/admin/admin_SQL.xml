@@ -41,6 +41,7 @@
        SELECT
             IDX,
             ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
             ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
         FROM
             qna_FILE
@@ -51,7 +52,7 @@
     ]]>
 	</select>
 
-	<delete id="deleteQna" parameterType="hashmap">
+	<update id="deleteQna" parameterType="hashmap">
 	<![CDATA[
 		UPDATE 
 			qna_board
@@ -60,8 +61,81 @@
 		WHERE
 			idx=#{IDX}
 	]]>
-	</delete>
+	</update>
 
+	<update id="introShowingAllN">
+		<![CDATA[
+		UPDATE 
+			intro
+		SET
+			showing = 'n'
+		]]>
+	</update>
+
+	<update id="introChangeNowShowing" parameterType="hashmap">
+	<![CDATA[
+		UPDATE
+			intro
+		SET
+			showing = 'y'
+		WHERE
+			num=#{num}
+	]]>
+	</update>
+
+
+	<insert id="insertIntro" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="num">
+		<selectKey resultType="int" keyProperty="num" order="BEFORE">
+			SELECT MAX(num+1) FROM intro;
+		</selectKey>
+	<![CDATA[
+		INSERT INTO intro
+		(
+			num,
+			id,
+			picture,
+			context
+		)
+		VALUES
+		(
+			#{num},
+			#{id},
+			'new',
+			#{context}
+		)
+	]]>
+	</insert>
+
+	<insert id="insertFile" parameterType="list">
+		<![CDATA[
+			INSERT INTO intro_file		
+			(
+				INTRO_IDX,
+				ORIGINAL_FILE_NAME,
+				STORED_FILE_NAME,
+				FILE_SIZE,
+				CREA_ID
+			)
+			VALUES
+			(
+				#{BOARD_IDX},
+				#{ORIGINAL_FILE_NAME},
+				#{STORED_FILE_NAME},
+				#{FILE_SIZE},
+				#{CREA_ID}
+			)
+		]]>
+	</insert>
+
+	<select id="openFileIntro" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				INTRO_FILE		
+		]]>
+	</select>
 </mapper>
 
 

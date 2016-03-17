@@ -10,20 +10,20 @@
 		<h2>회사 소개 관리</h2>
 		<h3 class="sub-header">회사 소개 수정하기</h3>
 
-		<form>
+		<form id="frmIntro" name="frmIntro" action="/admin/insertIntro.gs" method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="InputName">작성자</label> <input type="text"
-					class="form-control" id="writer" placeholder="김상각" readonly="readonly">
+				<label for="InputName">작성자</label> <input type="text" name="id"
+					class="form-control" id="writer" value="${sessionScope.sessionMap.emp_id}" readonly="readonly">
 			</div>
 
 			<div class="form-group">
 				<label for="companyIntroduce">소개글</label>
-				<textarea class="form-control" rows="10"></textarea>
+				<textarea class="form-control" rows="10" name="context"></textarea>
 			</div>
 			
 			<div class="form-group">
-				<label for="inputImgFile">사진 파일</label> <input type="file"
-					id="exampleInputFile">
+				<label for="inputImgFile">사진 파일</label> 
+				<input type="file" id="exampleInputFile" name="picture">
 				<p class="help-block">Example block-level help text here.</p>
 			</div>
 
@@ -33,4 +33,7 @@
 	</div>
 </div>
 
+<script>
+
+</script>
 

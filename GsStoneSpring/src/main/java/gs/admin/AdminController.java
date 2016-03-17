@@ -7,6 +7,7 @@ import gs.common.common.CommandMap;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -69,7 +70,8 @@ public class AdminController {
 		return mv;
 	}
 
-	//회사소개
+//회사소개
+	//openIntroPage
 	@RequestMapping(value="/openIntro.gs")
 	@ResponseBody
 	public List<Map<String, Object>> openIntro() throws IOException{
@@ -78,7 +80,32 @@ public class AdminController {
 		return resultList;
 	}
 	
+	//introChangeNowShoing
+	@RequestMapping(value="/introChangeNowShoing.gs")
+	public void introChangeNowShoing(CommandMap commandMap){
+		adminService.introChangeNowShowing(commandMap.getMap());
+	}
 	
+	@RequestMapping(value="/insertIntro.gs")
+	public String insertIntro(CommandMap commandMap,HttpServletRequest request){
+		try {
+			adminService.insertIntro(commandMap.getMap(), request);
+		} catch (SQLException e) {
+			System.err.println("SQLEception발생 !!!!");
+			e.printStackTrace();
+		} catch (IOException ioe){
+			System.err.println("IOException발생 !!!!");
+			ioe.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin/main.gs?page=intro_adminPage";
+	}
+	
+	
+	
+	
+//고객 문의
 	@RequestMapping(value="/openCustomerQna.gs")
 	@ResponseBody
 	public List<Map<String, Object>> openCustomerQna() throws IOException{

@@ -29,7 +29,27 @@ public class AdminDAO extends AbstractDAO {
 	}
 
 	public void deleteQna(Map<String, Object> commandMap) {
-		delete("admin.deleteQna", commandMap);
+		update("admin.deleteQna", commandMap);
+	}
+
+	public void introChangeNowShowing(Map<String, Object> map) {
+		update("admin.introChangeNowShowing", map);
+	}
+
+	public void introShowingAllN() {
+		update("admin.introShowingAllN", null);
+	}
+
+	public void insertIntro(Map<String, Object> map) {
+		insert("admin.insertIntro", map);
+	}
+
+	public void insertIntroFile(Map<String, Object> map) {
+		insert("admin.insertFile",map);
+	}
+
+	public List<Map<String, Object>> openFileIntro() {
+		return (List<Map<String, Object>>)selectList("admin.openFileIntro");
 	}
 
 
