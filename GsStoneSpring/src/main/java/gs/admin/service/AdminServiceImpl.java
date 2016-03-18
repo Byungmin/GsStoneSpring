@@ -184,7 +184,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	
-	
+	//카탈로그 수정
 	@Override
 	public void updateCatalogue(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		adminDAO.updateCatalogue(map);
@@ -201,6 +201,12 @@ public class AdminServiceImpl implements AdminService {
 		        	adminDAO.updateCatalogueFile(tempMap);
 		        }
 		    }
+	}
+
+	//카탈로그 지우기
+	@Override
+	public void deleteCatalogue(String iDX) {
+		adminDAO.deleteCatalogue(iDX);
 		
 	}
 	

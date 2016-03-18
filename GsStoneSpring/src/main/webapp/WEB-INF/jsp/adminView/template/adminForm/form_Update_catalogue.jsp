@@ -51,7 +51,7 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-sm">수정 하기</button>
 				<button type="reset" class="btn btn-primary btn-sm">다시 작성</button>
-				<button type="reset" class="btn btn-primary btn-sm">삭제</button>
+				<a href="/admin/deleteCatalogue.gs?IDX=${param.IDX}" class="btn btn-primary btn-sm">삭제</a>
 			</div>
 			<input type="hidden" name="CREA_ID"
 				value="${sessionScope.sessionMap.emp_id}">
@@ -65,6 +65,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		var getCatalogueDetailUrl = "/admin/getCatalogueDetail.gs";
 		var getCatalogueDetailParam ={"IDX" : "${param.IDX}"}; 
 		

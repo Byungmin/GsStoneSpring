@@ -40,5 +40,7 @@ public interface AdminService {
 
 	public void updateCatalogue(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
+	public void deleteCatalogue(String iDX);
+
 
 }

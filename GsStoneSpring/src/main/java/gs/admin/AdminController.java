@@ -176,4 +176,10 @@ public class AdminController {
 		adminService.updateCatalogue(map.getMap(),request);
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_catalogue";
 	}
+	
+	@RequestMapping(value="/deleteCatalogue.gs")
+	public String deleteCatalogue(@RequestParam String IDX){
+		adminService.deleteCatalogue(IDX);
+		return "redirect:/admin/main.gs?page=/adminForm/form_item_catalogue";
+	}
 }

@@ -123,6 +123,10 @@ public class AdminDAO extends AbstractDAO {
 		update("admin.updateCatalogueFile", tempMap);
 	}
 
+	public void deleteCatalogue(String iDX) {
+		update("admin.deleteCatalogue", iDX);
+	}
+
 
 	
 

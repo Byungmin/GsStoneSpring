@@ -296,6 +296,8 @@
             *
         FROM
             CATALOGUES
+        WHERE
+        	DEL_GB = 'N'
         ORDER BY IDX DESC
     ]]>
 	</select>
@@ -368,6 +370,15 @@
             DEL_GB = 'N'
         WHERE
             IDX = #{FILE_IDX}   
+    ]]>
+	</update>
+
+	<update id="deleteCatalogue" parameterType="string">
+    <![CDATA[
+        UPDATE catalogues SET
+            DEL_GB = 'Y'
+        WHERE
+            IDX = #{IDX}  
     ]]>
 	</update>
 
