@@ -12,84 +12,144 @@
 
 		<br />
 		<h4 class="sub-header">메뉴 리스트</h4>
-		<table class="table table-bordered">
+		<table class="table table-bordered" id="result">
+			<colgroup>
+				<col width="5%" />
+				<col width="*" />
+				<col width="20%" />
+				<col width="15%" />
+				<col width="20%" />
+				<col width="15%" />
+			</colgroup>
 			<thead>
 				<tr>
-					<th>글번호</th>
+					<th>no</th>
 					<th>상품명</th>
 					<th>상품가격</th>
 					<th>상품규격</th>
-					<th>첨부파일</th>
+					<th>작성일</th>
+					<th>작성자</th>
 				</tr>
 			</thead>
-
-			<tbody>
-				<tr>
-					<td>1,001</td>
-					<td>Lorem</td>
-					<td>ipsum</td>
-					<td>123</td>
-					<td>1313</td>
-				</tr>
-				<tr>
-					<td>1,002</td>
-					<td>amet</td>
-					<td>consectetur</td>
-					<td>adipiscing</td>
-					<td>elit</td>
-				</tr>
-				<tr>
-					<td>1,003</td>
-					<td>Integer</td>
-					<td>nec</td>
-					<td>odio</td>
-					<td>Praesent</td>
-				</tr>
-			</tbody>
+		
 		</table>
-
+			<button id="menuBtn" class="btn btn-primary btn-sm">메뉴 추가하기</button>
 		<br />
-
-		<!-- 수정이랑 같이 쓰기 -->
-		<h4 class="sub-header">메뉴 추가</h4>
-
-		<form>
-			<div class="form-group">
-				<label for="exampleInputName2">상품명</label> <input type="text"
-					class="form-control" id="tag">
+			
+			<div id="writeBox" style="visibility:hidden;">
+				<h4 class="sub-header">메뉴 추가</h4>
+		
+				<form id="frmItem" name="frmItem" action="/admin/insertItem.gs" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="exampleInputName2">상품명</label> <input type="text"
+							class="form-control" id="tag" name="TITLE">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2">상품가격</label> <input type="text"
+							class="form-control" id="tag" name="PRICE">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2">상품규격</label> <input type="text"
+							class="form-control" id="tag" name="SIZE">
+					</div>
+		
+					<div class="form-group">
+						<label for="companyIntroduce">상품설명</label>
+						<textarea class="form-control" rows="5" name="CONTENTS"></textarea>
+					</div>
+					
+					<div id="fileDiv" class="form-group">
+					<label for="inputImgFile">상품 사진</label>
+						<p><input type="file" id="file" name="file_0" class="filestyle">
+						 <a href="#this" id="delete" name="delete">삭제</a></p>
+					</div>
+					<div class="form-group">
+						<button id="addFile" class="btn btn-primary btn-sm">파일추가</button>
+					</div>
+		
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-sm">작성하기</button>
+						<button type="reset" class="btn btn-primary btn-sm">다시 작성</button>
+					</div>
+					<input type="hidden" name="CREA_ID" value="${sessionScope.sessionMap.emp_id}">
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputName2">상품가격</label> <input type="text"
-					class="form-control" id="tag">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputName2">상품규격</label> <input type="text"
-					class="form-control" id="tag">
-			</div>
-
-			<div class="form-group">
-				<label for="companyIntroduce">상품설명</label>
-				<textarea class="form-control" rows="5"></textarea>
-			</div>
-
-			<div class="form-group">
-				<label for="inputImgFile">상품 사진1</label> <input type="file"
-					id="exampleInputFile"> <label for="inputImgFile">상품
-					사진2</label> <input type="file" id="exampleInputFile"> <label
-					for="inputImgFile">상품 사진3</label> <input type="file"
-					id="exampleInputFile">
-				<p class="help-block">Example block-level help text here.</p>
-			</div>
-
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-sm">작성하기</button>
-				<button type="reset" class="btn btn-primary btn-sm">다시 작성</button>
-			</div>
-		</form>
+		
 
 		<br />
 
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		//파일 첨부 클릭시
+			$("#menuBtn").on("click",function(){
+				$("#writeBox").attr("style", "visibility:visible");
+			});
+		
+		//메뉴 리스트 가지고 오기
+			$.ajax({
+				type:"POST",
+				url:"/admin/getItemList.gs",
+				success:displayResult,
+				error:function(data){
+				}
+			});		
+		
+		function displayResult(data){
+			
+			var output = "<tbody>";
+			for (var i = 0; i < data.length; i++) {
+				var date = new Date(data[i].CREA_DTM);
+				var dateForm = date.getFullYear() + " / " + (date.getMonth() + 1) + " / " + date.getDate();
+				
+				output += "<tr>";
+				output += "<td>" + data[i].IDX + "</td>";
+				output += "<td><a href='/admin/main.gs?page=/adminForm/form_Detail_item_menu&IDX="+data[i].IDX+"'>" + data[i].TITLE + "</></td>";
+				output += "<td>" + data[i].PRICE + "</td>";
+				output += "<td>" + data[i].SIZE + "</td>";
+				output += "<td>" + dateForm + "</td>";
+				output += "<td>" + data[i].CREA_ID + "</td>";
+				output += "</tr>";
+			}
+			output += "</tbody>";
+			$("#result").append(output);
+		}
+		
+		
+		//메뉴 추가하기 버튼	
+			$("#submitBtn").on("click",function(){
+				console.log("click");
+				$("#frmItem").submit(function(e){
+					e.preventDefault();
+					location.reload();
+				});
+			});
+			
+	//첨부파일 추가 삭제			
+		var gfv_count = 1;
+			$("#addFile").on("click", function(e){ //파일 추가 버튼
+	            e.preventDefault();
+	            fn_addFile();
+	        });
+			 $("a[name='delete']").on("click", function(e){ //삭제 버튼
+	                e.preventDefault();
+	                fn_deleteFile($(this));
+	        });
+		 
+		function fn_addFile(){
+		          var str = "<p><input type='file' class='filestyle' name='file_"+(gfv_count++)+"'> <a href='#this' name='delete'>삭제</a></p>";
+		          $("#fileDiv").append(str);
+		          $("a[name='delete']").on("click", function(e){ //삭제 버튼
+		              e.preventDefault();
+		              fn_deleteFile($(this));
+		          });
+		      }
+		function fn_deleteFile(obj){
+		          obj.parent().remove();
+		      }
+		
+	});//ready
 
+</script>
 

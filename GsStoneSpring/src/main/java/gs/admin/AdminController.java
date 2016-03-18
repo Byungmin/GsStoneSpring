@@ -5,28 +5,18 @@ import gs.admin.service.AdminService;
 import gs.common.common.CommandMap;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -128,4 +118,62 @@ public class AdminController {
 		adminService.deleteQna(commandMap.getMap());
 	}
 	
+//아이템 메뉴
+	@RequestMapping(value="/insertItem.gs")
+	public String insertItem(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		adminService.insertIt(commandMap.getMap(), request);
+		return "redirect:/admin/main.gs?page=/adminForm/form_item_menu";
+	}
+	
+	@RequestMapping(value="/getItemList.gs")
+	@ResponseBody
+	public List<Map<String, Object>> getItemList() throws IOException{
+		List<Map<String, Object>> resultList = new ArrayList<Map<String,Object>>();
+		resultList = adminService.getItemList();
+		return resultList;
+	}
+	
+	
+	@RequestMapping(value="/getItemDetail.gs")
+	@ResponseBody
+	public Map<String, Object> getItemDetail(@RequestParam String IDX){
+		return adminService.getItemDetail(IDX); 
+	} 
+	
+	@RequestMapping(value="/updateItem.gs")
+	public String updateItem(CommandMap map, HttpServletRequest request) throws Exception{
+		adminService.updateItem(map.getMap(),request);
+		return "redirect:/admin/main.gs?page=/adminForm/form_item_menu";
+	}
+	
+	@RequestMapping(value="/deletePicture.gs")
+	public String deletePicture(@RequestParam String BOARD_IDX, @RequestParam String IDX){
+		adminService.deletePicture(IDX);
+		return "redirect:/admin/main.gs?page=/adminForm/form_Detail_item_menu&IDX="+ BOARD_IDX;
+	}
+	
+	@RequestMapping(value="/insertCatalogue.gs")
+	public String insertCatalogue(CommandMap map, HttpServletRequest request)throws Exception{
+		adminService.insertCatalouge(map.getMap(), request);
+		return "redirect:/admin/main.gs?page=item_adminPage";
+	}
+	
+	//카탈로그
+	@RequestMapping(value="/openCatalogue.gs")
+	@ResponseBody
+	public List<Map<String, Object>> openCatalogue(){
+		return adminService.openCatalogue();
+	}
+
+	@RequestMapping(value="/getCatalogueDetail.gs")
+	@ResponseBody
+	public Map<String, Object> getCatalogueDetail(@RequestParam String IDX){
+		return adminService.getCatalogueDetail(IDX); 
+	} 
+	
+	@RequestMapping(value="/catalogueUpdate.gs")
+	public String updateCatalogue(CommandMap map, HttpServletRequest request) throws Exception{
+		adminService.updateCatalogue(map.getMap(),request);
+		return "redirect:/admin/main.gs?page=/adminForm/form_item_catalogue";
+	}
 }

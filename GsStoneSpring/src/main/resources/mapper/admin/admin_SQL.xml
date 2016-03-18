@@ -87,7 +87,8 @@
 	<insert id="insertIntro" parameterType="hashmap"
 		useGeneratedKeys="true" keyProperty="num">
 		<selectKey resultType="int" keyProperty="num" order="BEFORE">
-			SELECT MAX(num+1) FROM intro;
+			SELECT
+			MAX(num+1) FROM intro;
 		</selectKey>
 	<![CDATA[
 		INSERT INTO intro
@@ -136,6 +137,242 @@
 				INTRO_FILE		
 		]]>
 	</select>
+
+	<insert id="insertItem" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="IDX">
+	<![CDATA[
+			 INSERT INTO ITEM
+    		(
+    			TITLE,
+    			PRICE,
+    			SIZE,
+    			CONTENTS,
+    			CREA_ID
+    		)
+    		VALUES
+    		(
+    			#{TITLE},
+    			#{PRICE},
+    			#{SIZE},
+    			#{CONTENTS},
+    			#{CREA_ID}
+    		)
+	]]>
+	</insert>
+
+
+	<insert id="insertItemFile" parameterType="list">
+		<![CDATA[
+			INSERT INTO ITEM_FILE
+			(
+				BOARD_IDX,
+				ORIGINAL_FILE_NAME,
+				STORED_FILE_NAME,
+				FILE_SIZE,
+				CREA_ID
+			)
+			VALUES
+			(
+				#{BOARD_IDX},
+				#{ORIGINAL_FILE_NAME},
+				#{STORED_FILE_NAME},
+				#{FILE_SIZE},
+				#{CREA_ID}
+			)
+		]]>
+	</insert>
+
+	<select id="getItemList" resultType="hashmap">
+	    <![CDATA[
+        SELECT
+            *
+        FROM
+            item
+        WHERE del_gb = 'N'
+        ORDER BY idx DESC
+    ]]>
+	</select>
+
+	<select id="getItemDetail" parameterType="string" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            item
+       	WHERE
+       		IDX = #{IDX}
+    ]]>
+	</select>
+
+	<select id="selectItemFileList" parameterType="string"
+		resultType="hashmap">
+    <![CDATA[
+       SELECT
+            IDX,
+            ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
+            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+        FROM
+            item_file
+        WHERE
+            BOARD_IDX = #{IDX}
+            AND DEL_GB = 'N'
+    ]]>
+	</select>
+
+	<update id="updateItem">
+	<![CDATA[
+		UPDATE ITEM
+		SET
+			TITLE = #{TITLE},
+			PRICE = #{PRICE},
+			SIZE = #{SIZE},
+			CONTENTS = #{CONTENTS},
+			CREA_ID = #{CREA_ID},
+			CREA_DTM = now()
+		WHERE
+			IDX = #{IDX}
+	]]>
+	</update>
+
+	<update id="deleteFileList" parameterType="hashmap">
+    <![CDATA[
+        UPDATE ITEM_FILE SET
+            DEL_GB = 'Y'
+        WHERE
+            BOARD_IDX = #{IDX}  
+    ]]>
+	</update>
+
+	<update id="deletePicture" parameterType="string">
+    <![CDATA[
+        UPDATE ITEM_FILE SET
+            DEL_GB = 'Y'
+        WHERE
+            IDX = #{IDX}  
+    ]]>
+	</update>
+
+	<insert id="insertCatalouge" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="IDX">
+	<![CDATA[
+			 INSERT INTO CATALOGUES
+    		(
+    			TITLE,
+    			CREA_ID
+    		)
+    		VALUES
+    		(
+    			#{TITLE},
+    			#{CREA_ID}
+    		)
+	]]>
+	</insert>
+
+	<insert id="insertCatalougeFile" parameterType="list">
+		<![CDATA[
+			INSERT INTO CATALOGUES_FILE
+			(
+				BOARD_IDX,
+				ORIGINAL_FILE_NAME,
+				STORED_FILE_NAME,
+				FILE_SIZE,
+				CREA_ID
+			)
+			VALUES
+			(
+				#{BOARD_IDX},
+				#{ORIGINAL_FILE_NAME},
+				#{STORED_FILE_NAME},
+				#{FILE_SIZE},
+				#{CREA_ID}
+			)
+		]]>
+	</insert>
+
+	<select id="openCatalogue" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            CATALOGUES
+        ORDER BY IDX DESC
+    ]]>
+	</select>
+
+	<select id="openCatalogueFile" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				CATALOGUES_FILE	
+			WHERE
+				BOARD_IDX=#{boardIDX}
+				AND DEL_GB = 'N' 
+		]]>
+	</select>
+
+
+	<select id="getCatalogueDetail" parameterType="string"
+		resultType="hashmap">
+    <![CDATA[
+        SELECT
+            *
+        FROM
+            catalogues
+       	WHERE
+       		IDX = #{IDX}
+    ]]>
+	</select>
+
+	<select id="selectCatalogueFileList" parameterType="string"
+		resultType="hashmap">
+    <![CDATA[
+       SELECT
+            IDX,
+            ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
+            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+        FROM
+            catalogues_file
+        WHERE
+            BOARD_IDX = #{IDX}
+            AND DEL_GB = 'N'
+    ]]>
+	</select>
+
+	<update id="updateCatalogue">
+	<![CDATA[
+		UPDATE catalogues
+		SET
+			TITLE = #{TITLE},
+			CREA_ID = #{CREA_ID},
+			CREA_DTM = now()
+		WHERE
+			IDX = #{IDX}
+	]]>
+	</update>
+
+	<update id="deleteCatalogueFileList" parameterType="hashmap">
+    <![CDATA[
+        UPDATE catalogues_FILE SET
+            DEL_GB = 'Y'
+        WHERE
+            BOARD_IDX = #{IDX}  
+    ]]>
+	</update>
+
+	<update id="updateCatalogueFile" parameterType="hashmap">
+    <![CDATA[
+        UPDATE catalogues_FILE SET
+            DEL_GB = 'N'
+        WHERE
+            IDX = #{FILE_IDX}   
+    ]]>
+	</update>
+
+
+
 </mapper>
 
 

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import gs.common.common.CommandMap;
 import gs.common.dao.AbstractDAO;
 
 @SuppressWarnings("unchecked")
@@ -52,10 +51,80 @@ public class AdminDAO extends AbstractDAO {
 		return (List<Map<String, Object>>)selectList("admin.openFileIntro");
 	}
 
+	public void insertItem(Map<String, Object> map) {
+		insert("admin.insertItem", map);
+	}
+
+	public void insertItemFile(Map<String, Object> map) {
+		insert("admin.insertItemFile", map);
+	}
+
+	public List<Map<String, Object>> getItemList() {
+		return (List<Map<String, Object>>)selectList("admin.getItemList");
+	}
+
+	public Map<String, Object> getItemDetail(String IDX) {
+		return (Map<String, Object>)selectOne("admin.getItemDetail", IDX);
+	}
+	
+	public List<Map<String, Object>> selectItemFileList(String IDX) {
+		return (List<Map<String, Object>>)selectList("admin.selectItemFileList", IDX);
+	}
+
+	public void updateItem(Map<String, Object> map) {
+		update("admin.updateItem", map);
+	}
+
+	public void deleteFileList(Map<String, Object> map) {
+		update("admin.deleteFileList", map);
+	}
+
+	public void updateItemFile(Map<String, Object> tempMap) {
+		update("admin.updateItemFile", tempMap);
+	}
+
+	public void deletePicture(String iDX) {
+		update("admin.deletePicture", iDX);
+	}
+
+	public void insertCatalouge(Map<String, Object> map) {
+		insert("admin.insertCatalouge", map);
+	}
+
+	public void insertCatalougeFile(Map<String, Object> map) {
+		insert("admin.insertCatalougeFile", map);
+	}
+
+	public List<Map<String, Object>> openCatalogue() {
+		return (List<Map<String, Object>>)selectList("admin.openCatalogue");
+	}
+	
+	public Map<String, Object> openCatalogueFile(int boardIDX) {
+		return (Map<String, Object>)selectOne("admin.openCatalogueFile", boardIDX);
+	}
+
+	public Map<String, Object> getCatalogueDetail(String IDX) {
+		return (Map<String, Object>)selectOne("admin.getCatalogueDetail", IDX);
+	}
+
+	public List<Map<String, Object>> selectCatalogueFileList(String IDX) {
+		return (List<Map<String, Object>>)selectList("admin.selectCatalogueFileList", IDX);
+	}
+
+	public void updateCatalogue(Map<String, Object> map) {
+		update("admin.updateCatalogue", map);
+	}
+
+	public void deleteCatalogueFileList(Map<String, Object> map) {
+		update("admin.deleteCatalogueFileList", map);
+	}
+
+	public void updateCatalogueFile(Map<String, Object> tempMap) {
+		update("admin.updateCatalogueFile", tempMap);
+	}
 
 
-
-		
+	
 
 
 }

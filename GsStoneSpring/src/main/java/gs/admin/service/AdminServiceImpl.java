@@ -98,4 +98,112 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
+	@Override
+	public void insertIt(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		adminDAO.insertItem(map);
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(map, request);
+		for (int i = 0; i < list.size(); i++) {
+			adminDAO.insertItemFile(list.get(i));
+		}
+	}
+
+	//아이템리스트
+	@Override
+	public List<Map<String, Object>> getItemList() {
+		return adminDAO.getItemList();
+	}
+
+	
+	//itemDetail 값 가져오기
+	@Override
+	public Map<String, Object> getItemDetail(String iDX) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = adminDAO.getItemDetail(iDX);
+		List<Map<String, Object>> fileList = adminDAO.selectItemFileList(iDX);
+		resultMap.put("fileList", fileList);
+		return resultMap;
+	}
+
+	//item 수정하기
+	@Override
+	public void updateItem(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		adminDAO.updateItem(map);
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(map, request);
+		Map<String, Object> tempMap = null;
+		for(int i=0, size=list.size();i<size;i++){
+			tempMap =list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")){
+				adminDAO.insertItemFile(tempMap);
+			}
+		}
+	}
+
+	//메뉴 사진 삭제
+	@Override
+	public void deletePicture(String iDX) {
+		adminDAO.deletePicture(iDX);
+	}
+
+	//카탈로그 추가
+	@Override
+	public void insertCatalouge(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		adminDAO.insertCatalouge(map);
+		
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(map, request);
+		for (int i = 0; i < list.size(); i++) {
+			adminDAO.insertCatalougeFile(list.get(i));
+		}
+	}
+
+	//카탈로그 리스트 가져오기
+	@Override
+	public List<Map<String, Object>> openCatalogue() {
+		List<Map<String, Object>> list = adminDAO.openCatalogue();
+		
+		for(int i=0,n=list.size();i<n;i++){
+			Map<String, Object> tempMap = list.get(i);
+			int boardIDX = Integer.parseInt(tempMap.get("IDX").toString());
+			Map<String, Object>file = adminDAO.openCatalogueFile(boardIDX);
+			tempMap.put("imgFile", file);
+			list.set(i,tempMap);
+		}
+		return list;
+	}
+
+	
+	//카탈로그 상세정보
+	@Override
+	public Map<String, Object> getCatalogueDetail(String iDX) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = adminDAO.getCatalogueDetail(iDX);
+		List<Map<String, Object>> fileList = adminDAO.selectCatalogueFileList(iDX);
+		resultMap.put("fileList", fileList);
+		return resultMap;
+	}
+
+	
+	
+	@Override
+	public void updateCatalogue(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		adminDAO.updateCatalogue(map);
+	     
+		adminDAO.deleteCatalogueFileList(map);
+		    List<Map<String,Object>> list = fileUtils.parseUpdateFileInfo(map, request);
+		    Map<String,Object> tempMap = null;
+		    for(int i=0, size=list.size(); i<size; i++){
+		        tempMap = list.get(i);
+		        if(tempMap.get("IS_NEW").equals("Y")){
+		        	adminDAO.insertCatalougeFile(tempMap);
+		        }
+		        else{
+		        	adminDAO.updateCatalogueFile(tempMap);
+		        }
+		    }
+		
+	}
+	
+	
+	
 }

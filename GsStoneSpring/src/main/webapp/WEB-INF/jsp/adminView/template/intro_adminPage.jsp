@@ -38,7 +38,7 @@
 			<table class="table table-bordered" id="result">
 				<thead>
 					<tr>
-						<th>글번호</th>
+						<th>no</th>
 						<th>작성일</th>
 						<th>작성자</th>
 						<th>첨부파일</th>
@@ -85,7 +85,7 @@
 								output += "<td>" + data[i].date + "</td>";
 								output += "<td>" + data[i].id + "</td>";
 								output += "<td>" + data[i].picture + "</td>";
-								output += "<td><a href='#'>" + contextInit + "</a></td>";
+								output += "<td>" + contextInit + "</td>";
 								output += "<td>"
 										+ "<input type='button' name='showingBtn' class='btn btn-primary btn-sm' "
 										+ (data[i].showing === 'n' ? " value='게시하기'"

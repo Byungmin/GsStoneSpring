@@ -4,7 +4,6 @@ import gs.common.util.FileUtils;
 import gs.web.qna.dao.QnaDAO;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService {

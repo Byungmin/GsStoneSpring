@@ -22,5 +22,23 @@ public interface AdminService {
 
 	public void insertIntro(Map<String, Object> map, HttpServletRequest request)throws Exception;
 
+	public void insertIt(Map<String, Object> map, HttpServletRequest request)throws Exception;
+
+	public List<Map<String, Object>> getItemList();
+
+	public Map<String, Object> getItemDetail(String iDX);
+
+	public void updateItem(Map<String, Object> map, HttpServletRequest request) throws Exception;
+
+	public void deletePicture(String iDX);
+
+	public void insertCatalouge(Map<String, Object> map, HttpServletRequest request)throws Exception;
+
+	public List<Map<String, Object>> openCatalogue();
+
+	public Map<String, Object> getCatalogueDetail(String iDX);
+
+	public void updateCatalogue(Map<String, Object> map, HttpServletRequest request) throws Exception;
+
 
 }
