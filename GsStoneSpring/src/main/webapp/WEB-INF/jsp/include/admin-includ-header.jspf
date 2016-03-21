@@ -1,50 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">GSSTONE 관리자</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">회사소개</a></li>
-            <li><a href="/item.gs">제품소개</a></li>
-            <li><a href="/customer.gs">고객센터</a></li>
-            <li><a href="/admin/main.gs">관리자페이지</a></li>
-            <li><a href="/logOut.gs">로그아웃</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+	pageEncoding="UTF-8"%>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">GSSTONE 관리자</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/item.gs">GSSTONE 홈페이지</a></li>
+					<li><a href="/admin/main.gs">관리 페이지 메인</a></li>
+					<li><a href="/admin/main.gs?page=intro_adminPage">회사 소개 관리</a></li>
+					<li><a href="/admin/main.gs?page=item_adminPage">제품 소개 관리</a></li>
+					<li><a href="/admin/main.gs?page=customer_adminPage">고객 문의
+							관리</a></li>
+					<li><a href="/admin/main.gs?page=employee_adminPage">직원 관리</a></li>
+					<li><a href="/logOut.gs">로그아웃</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active">
+						<a href="/admin/main.gs">기본정보</a></li>
+						<!-- <span class="sr-only">(current)</span> -->
+				</ul>
+				<ul class="nav nav-sidebar">
 
+					<li><a href="/admin/main.gs?page=intro_adminPage">회사 소개 관리</a></li>
+					<li><a href="/admin/main.gs?page=item_adminPage">제품 소개 관리</a></li>
+					<li><a href="/admin/main.gs?page=customer_adminPage">고객 문의
+							관리</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="/admin/main.gs?page=employee_adminPage">직원 관리</a></li>
+					<li><a href="#">고객 관리</a></li>
+					<li><a href="#">장부 관리</a></li>
+				</ul>
 
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="/admin/main.gs">Overview<span class="sr-only">(current)</span></a></li>
-            <li><a href="#" id="">기본정보</a></li>
-            <li><a href="/admin/main.gs?page=intro_adminPage">회사 소개 관리</a></li>
-            <li><a href="/admin/main.gs?page=item_adminPage">제품 소개 관리</a></li>
-            <li><a href="/admin/main.gs?page=customer_adminPage">고객 문의 관리</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="/admin/main.gs?page=employee_adminPage">직원 관리</a></li>
-            <li><a href="#">고객 관리</a></li>
-            <li><a href="#">장부 관리</a></li>
-          </ul>
-          
-          <ul class="nav nav-sidebar">
-            <li><a href="/logOut.gs">로그아웃</a></li>
-          </ul>
-        </div>
-  
+				<ul class="nav nav-sidebar">
+					<li><a href="/logOut.gs">로그아웃</a></li>
+				</ul>
+			</div>
