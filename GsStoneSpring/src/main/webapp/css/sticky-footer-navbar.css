@@ -1,0 +1,115 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 80px 15px;
+  
+}
+
+/* header */
+body > .navbar{
+  height: 100px;
+  background-color: #BD0B26;
+  border-bottom: 2px solid #474747;
+}
+/* 로고 */
+.navbar .navbar-brand{
+	color:white;
+	font-size: 30px;
+	padding-top: 30px;
+	margin-right: 50px;
+}
+#navbar .nav li{
+	margin-right: 50px;
+}
+#navbar .nav li:LAST-CHILD{
+	margin-right: -70px;
+}
+#navbar .nav a{
+	color:white;
+	font-size: 20px;
+}
+#navbar .nav a:HOVER{
+	color: #FFFF90;
+}
+
+/* nav button */
+.navbar-toggle {
+	background-color: white;
+	border: 1px solid transparent;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+	margin-top:48px;
+	background-color: #BD0B26;
+	border-color: #BD0B26;
+}
+@media ( min-width :768px) {
+	.navbar-nav {
+		float: left;
+		margin: 0;
+		width: 420px;
+	}
+	.navbar-nav>li {
+		float: left;
+	}
+	.navbar-nav>li>a {
+		padding-bottom: 15px;
+	}
+}
+
+.navbar-nav {
+	overflow: hidden;
+}
+
+
+/* itemList */
+.dropdown-menu {
+	min-width: 300px;
+	font-size: 17px;
+}
+
+.dropdown-menu>li>a {
+	padding: 10px 5px; /* 3px였음 */
+}
+
+/* intro */
+
+
+
+
+.container .text-muted {
+  margin: 10px 0;
+  font-size: 15px;
+}
+.footer{
+	height: 100px;
+}
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}

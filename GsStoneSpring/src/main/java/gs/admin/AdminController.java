@@ -182,4 +182,23 @@ public class AdminController {
 		adminService.deleteCatalogue(IDX);
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_catalogue";
 	}
+	
+	@RequestMapping(value="/getItemAdminPageData.gs")
+	@ResponseBody
+	public Map<String, Object> getItemAdminPageData(){
+		return adminService.getItemAdminpageData();
+	}
+	
+	@RequestMapping(value="/deleteItem.gs")
+	public String deleteItem(@RequestParam String IDX){
+		adminService.deleteItem(IDX);
+		return "redirect:/admin/main.gs?page=/adminForm/form_item_menu";
+	}
+
+	@RequestMapping(value="/getMainInfo.gs")
+	@ResponseBody
+	public Map<String, Object>getMainInfo(){
+		return adminService.getMainInfo();
+	}
+	
 }

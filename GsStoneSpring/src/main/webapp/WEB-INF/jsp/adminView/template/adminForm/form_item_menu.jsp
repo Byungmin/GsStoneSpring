@@ -36,26 +36,26 @@
 			<button id="menuBtn" class="btn btn-primary btn-sm">메뉴 추가하기</button>
 		<br />
 			
-			<div id="writeBox" style="visibility:hidden;">
+			<div id="writeBox" style="display: none;">
 				<h4 class="sub-header">메뉴 추가</h4>
 		
 				<form id="frmItem" name="frmItem" action="/admin/insertItem.gs" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="exampleInputName2">상품명</label> <input type="text"
-							class="form-control" id="tag" name="TITLE">
+							class="form-control" id="TITLE" name="TITLE">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputName2">상품가격</label> <input type="text"
-							class="form-control" id="tag" name="PRICE">
+							class="form-control" id="PRICE" name="PRICE">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputName2">상품규격</label> <input type="text"
-							class="form-control" id="tag" name="SIZE">
+							class="form-control" id="SIZE" name="SIZE">
 					</div>
 		
 					<div class="form-group">
 						<label for="companyIntroduce">상품설명</label>
-						<textarea class="form-control" rows="5" name="CONTENTS"></textarea>
+						<textarea class="form-control" id="CONTENTS" rows="5" name="CONTENTS"></textarea>
 					</div>
 					
 					<div id="fileDiv" class="form-group">
@@ -67,6 +67,7 @@
 						<button id="addFile" class="btn btn-primary btn-sm">파일추가</button>
 					</div>
 		
+					<p id="msg" style="color: red;"></p>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-sm">작성하기</button>
 						<button type="reset" class="btn btn-primary btn-sm">다시 작성</button>
@@ -82,7 +83,27 @@
 </div>
 <script>
 	$(document).ready(function(){
-		//파일 첨부 클릭시
+		
+		$("button[type='submit']").on("click",function(e){
+			console.log("click");
+			e.preventDefault();
+			if($("#TITLE").val()==null||$("#TITLE").val()==""){
+				$("#msg").text("상품명을 입력하세요");
+			}else if($("#PRICE").val()==null||$("#PRICE").val()==""){
+				$("#msg").text("상품가격을 입력하세요");
+			}else if($("#SIZE").val()==null||$("#SIZE").val()==""){
+				$("#msg").text("상품규격을 입력하세요");
+			}else if($("#CONTENTS").val()==null||$("#CONTENTS").val()==""){
+				$("#msg").text("상품설명을 입력하세요");
+			}
+			
+			else{
+				$("#frmItem").submit();
+			}
+		});
+		
+		
+		//메뉴 추가하기
 			$("#menuBtn").on("click",function(){
 				$("#writeBox").attr("style", "visibility:visible");
 			});

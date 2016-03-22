@@ -42,5 +42,11 @@ public interface AdminService {
 
 	public void deleteCatalogue(String iDX);
 
+	public Map<String, Object> getItemAdminpageData();
+
+	public void deleteItem(String iDX);
+
+	public Map<String, Object> getMainInfo();
+
 
 }

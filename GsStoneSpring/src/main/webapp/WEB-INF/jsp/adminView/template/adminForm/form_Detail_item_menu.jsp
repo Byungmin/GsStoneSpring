@@ -53,8 +53,9 @@
 		
 					<div class="form-group">
 						<button id="update" class="btn btn-primary btn-sm">수정하기</button>
-						<button type="submit" class="btn btn-primary btn-sm" style="visibility:hidden;">작성하기</button>
+						<button type="submit" class="btn btn-primary btn-sm" style="visibility:hidden;">변경내용 저장 하기</button>
 						<button type="reset" class="btn btn-primary btn-sm" style="visibility:hidden;">다시 작성</button>
+						<a href="/admin/deleteItem.gs?IDX=${param.IDX}" class="btn btn-primary btn-sm" style="visibility:hidden;">글 삭제</a>
 					</div>
 					<input type="hidden" name="CREA_ID" value="${sessionScope.sessionMap.emp_id}">
 					<input type="hidden" id="IDX" name="IDX" value="${param.IDX}">
@@ -75,6 +76,7 @@
 			$(".form-group input").attr("readOnly",false);
 			$(".form-group textarea").attr("readOnly",false);
 			$(".form-group button").attr("style", "visibility:visible;");
+			$(".form-group a").attr("style", "visibility:visible;");
 			$("#fileUpdate").attr("style", "display: block;");
 			$(".form-group #update").attr("disabled", "disabled");
 			$("#fileDiv a").attr("style", "display: block;");

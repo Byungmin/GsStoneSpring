@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">
+
+	<select id="getIntro" resultType="hashmap">
+     <![CDATA[
+		SELECT 
+			*
+		FROM
+			intro
+		WHERE
+			showing = 'y'
+     ]]>
+	</select>
+
+	<select id="getIntroFlie" resultType="hashmap" parameterType="int">
+ 	<![CDATA[
+		SELECT
+			*
+		FROM
+			intro_file
+		WHERE
+			intro_idx = #{idx}	
+	]]>
+	</select>
+	
+	<select id="getItemList" resultType="hashmap">
+	<![CDATA[
+		SELECT
+			idx,
+			title
+		FROM
+			item
+		WHERE
+			del_gb='n'
+	]]>
+	</select>
+
+	<select id="getItemDetail" parameterType="string" resultType="hashmap">	
+	<![CDATA[
+		SELECT
+			*
+		FROM
+			ITEM
+		WHERE
+			IDX=#{IDX}
+	]]>
+	</select>
+
+	<select id="getItemFile" parameterType="string" resultType="hashmap">
+	<![CDATA[
+		select 
+			* 
+		from 
+			item_file 
+		where 
+			board_idx = #{idx} 
+	]]>
+	</select>
+
+	<select id="getCatalogues" resultType="hashmap">
+	<![CDATA[
+		select 
+			*
+		from
+			catalogues
+		where
+			del_gb = 'n'
+	]]>
+	</select>
+	<select id="getImg" parameterType="string" resultType="hashmap">
+	<![CDATA[
+		select 
+			*
+		from
+			catalogues_file
+		where
+			board_idx = #{idx}
+		and
+			del_gb = 'n'
+	]]>
+	</select>
+	
+</mapper>
+
+

@@ -24,7 +24,6 @@
 			<div class="form-group">
 				<label for="inputImgFile">사진 파일</label> 
 				<input type="file" id="exampleInputFile" name="picture">
-				<p class="help-block">Example block-level help text here.</p>
 			</div>
 
 			<button type="submit" class="btn btn-primary btn-sm">작성하기</button>
@@ -34,6 +33,14 @@
 </div>
 
 <script>
-
+	$("button[type='submit']").on("click",function(e){
+		e.preventDefault();
+		var textArea = $("textarea[name='context']");
+		if(textArea.val()==null||textArea.val()==""){
+			textArea.attr("placeholder","내용을 입력 하세요");
+		}else{
+			$("#frmIntro").submit();
+		}
+	});
 </script>
 

@@ -16,12 +16,21 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/item.gs">GSSTONE 홈페이지</a></li>
-					<li><a href="/admin/main.gs">관리 페이지 메인</a></li>
-					<li><a href="/admin/main.gs?page=intro_adminPage">회사 소개 관리</a></li>
-					<li><a href="/admin/main.gs?page=item_adminPage">제품 소개 관리</a></li>
-					<li><a href="/admin/main.gs?page=customer_adminPage">고객 문의
-							관리</a></li>
-					<li><a href="/admin/main.gs?page=employee_adminPage">직원 관리</a></li>
+
+					<li><a id="dLabel" data-target="#" href="#"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"> 관리자 페이지 <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+							<li><a href="/admin/main.gs">관리 페이지 메인</a></li>
+							<li><a href="/admin/main.gs?page=intro_adminPage">회사 소개
+									관리</a></li>
+							<li><a href="/admin/main.gs?page=item_adminPage">제품 소개
+									관리</a></li>
+							<li><a href="/admin/main.gs?page=customer_adminPage">고객
+									문의 관리</a></li>
+						</ul></li>
+
 					<li><a href="/logOut.gs">로그아웃</a></li>
 				</ul>
 			</div>
@@ -32,9 +41,8 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active">
-						<a href="/admin/main.gs">기본정보</a></li>
-						<!-- <span class="sr-only">(current)</span> -->
+					<li class="active"><a href="/admin/main.gs">기본정보</a></li>
+					<!-- <span class="sr-only">(current)</span> -->
 				</ul>
 				<ul class="nav nav-sidebar">
 
@@ -44,7 +52,7 @@
 							관리</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="/admin/main.gs?page=employee_adminPage">직원 관리</a></li>
+					<li><a href="#">직원 관리<!-- /admin/main.gs?page=employee_adminPage --></a></li>
 					<li><a href="#">고객 관리</a></li>
 					<li><a href="#">장부 관리</a></li>
 				</ul>

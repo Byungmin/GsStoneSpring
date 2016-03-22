@@ -22,7 +22,7 @@
 					 	id="introNowShowingImg"
 						src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
 						width="400" height="400" class="img-responsive"
-						alt="Generic placeholder thumbnail">
+						alt="저장된 사진이 없습니다.">
 					<h4>
 						<span id="showingDate">작성일 지정</span>
 					</h4>
@@ -36,6 +36,14 @@
 		<h3 class="sub-header">지난 회사소개 글</h3>
 		<form>
 			<table class="table table-bordered" id="result">
+			<colgroup>
+				<col width="5%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="*" />
+				<col width="15%" />
+			</colgroup>
 				<thead>
 					<tr>
 						<th>no</th>
@@ -55,8 +63,6 @@
 	$(document)
 			.ready(
 					function() {
-						console.log("intro_adminPage");
-
 						$.ajax({
 							type : "POST",
 							url : "/admin/openIntro.gs",
@@ -68,21 +74,22 @@
 						function displayResult(data) {
 							var output = "<tbody>";
 							for (var i = 0; i < data.length; i++) {
-
+								var date = new Date(data[i].date);
+								var dateForm = date.getFullYear() + " / " + (date.getMonth() + 1) + " / " + date.getDate();
 								//미리보기 글자수 50자로 요약
 								var contextInit = data[i].context;
 								contextInit = contextInit.substr(0, 49);
 
 								//게시중인 글 확인후 출력하기
 								if (data[i].showing === 'y') {
-									$("#showingDate").html(data[i].date);
+									$("#showingDate").html(dateForm);
 									$("#showingContext").html(data[i].context);
 									$("#introNowShowingImg").attr("src","/resources/upload/"+data[i].picture+"");
 								}
 
 								output += "<tr>";
 								output += "<td>" + data[i].num + "</td>";
-								output += "<td>" + data[i].date + "</td>";
+								output += "<td>" + dateForm + "</td>";
 								output += "<td>" + data[i].id + "</td>";
 								output += "<td>" + data[i].picture + "</td>";
 								output += "<td>" + contextInit + "</td>";

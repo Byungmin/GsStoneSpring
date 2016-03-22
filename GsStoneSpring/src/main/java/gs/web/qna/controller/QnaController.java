@@ -27,7 +27,7 @@ public class QnaController {
 	@RequestMapping(value="/qna/insertQna.gs")
 	public String insertQna(CommandMap map, HttpServletRequest request) throws Exception{
 		qnaService.insertQna(map.getMap(),request);
-		return "redirect:/item.gs";
+		return "redirect:/cataloguePage.gs";
 	}
 	
 	

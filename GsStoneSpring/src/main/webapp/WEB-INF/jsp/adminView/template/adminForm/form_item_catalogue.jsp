@@ -47,6 +47,17 @@
 <script>
 $(document).ready(function(){
 	
+	$("button[type='submit']").on("click",function(e){
+		e.preventDefault();
+		var title = $("#title");
+		if(title.val()==null||title.val()==""){
+			title.attr("placeholder","카탈로그 설명은 필수 입력입니다.");
+		}else{
+			$("#frmCatalogueInsert").submit();
+		}
+	});
+	
+	
 	//카탈로그 리스트 가져오기
 	$.ajax({
 		type : "POST",
@@ -62,7 +73,7 @@ $(document).ready(function(){
 		for(var i=0;i<data.length;i++){
 			output += "<div class='col-xs-6 col-sm-3 placeholder'>";
 			output += "<img src='/resources/upload/"+(data[i].imgFile != null?data[i].imgFile.STORED_FILE_NAME:"")+"' width='200' height='200' class='img-responsive'"
-						+"alt='Generic placeholder thumbnail'>";
+						+"alt='저장된 사진이 없습니다.'>";
 			output += "<h4>"+data[i].TITLE+"</h4>";
 			output += "<span class='text-muted'>";
 			output += "<a href='/admin/main.gs?page=/adminForm/form_Update_catalogue&IDX="+data[i].IDX+"' class='btn btn-primary btn-sm'>수정</a>";

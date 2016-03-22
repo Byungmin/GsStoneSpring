@@ -235,6 +235,18 @@
 	]]>
 	</update>
 
+	<update id="deleteItem" parameterType="string">
+	<![CDATA[
+		UPDATE ITEM
+		SET
+			del_gb = 'y'
+		WHERE
+			IDX = #{IDX}
+	]]>
+	</update>
+
+
+
 	<update id="deleteFileList" parameterType="hashmap">
     <![CDATA[
         UPDATE ITEM_FILE SET
@@ -382,8 +394,79 @@
     ]]>
 	</update>
 
+	<select id="countAllCatal" resultType="int">
+	<![CDATA[
+		SELECT 	COUNT(IDX)
+		FROM CATALOGUES
+	]]>
+	</select>
+	<select id="deletedCatal" resultType="int">
+	<![CDATA[
+		SELECT 	COUNT(IDX)
+		FROM CATALOGUES
+		WHERE DEL_GB = 'Y'
+	]]>
+	</select>
+	<select id="latlyUpdateCatal" resultType="object">
+	<![CDATA[
+		SELECT 	max(crea_dtm)
+		FROM CATALOGUES
+	]]>
+	</select>
+
+	<select id="countAllMenuItem" resultType="int">
+	<![CDATA[
+		SELECT 	COUNT(IDX)
+		FROM item
+	]]>
+	</select>
+
+	<select id="deletedMenu" resultType="int">
+	<![CDATA[
+		SELECT 	COUNT(IDX)
+		FROM item
+		WHERE DEL_GB = 'Y'
+	]]>
+	</select>
+
+	<select id="latalyUpdateMenu" resultType="object">
+	<![CDATA[
+		SELECT 	max(crea_dtm)
+		FROM item
+	]]>
+	</select>
+
+	<select id="countAllQna" resultType="int">
+	<![CDATA[
+		SELECT 	COUNT(IDX)
+		FROM qna_board
+	]]>
+	</select>
 
 
+	<select id="countAllIntro" resultType="int">
+	<![CDATA[
+		SELECT 	COUNT(num)
+		FROM intro
+	]]>
+	</select>
+	
+	<select id="allEnterCount" resultType="int">
+	<![CDATA[
+		SELECT 	sum(count)
+		FROM entercounting
+	]]>
+	</select>
+	
+		<select id="todayEnterCount" resultType="int">
+	<![CDATA[
+		select count
+		from entercounting
+		where date = (
+						select max(date) from entercounting
+					)
+	]]>
+	</select>
 </mapper>
 
 

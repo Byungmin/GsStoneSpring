@@ -24,6 +24,33 @@ public class AdminServiceImpl implements AdminService {
 	private FileUtils fileUtils;
 
 	@Override
+	public Map<String, Object> getMainInfo() {
+		Map<String, Object>resultMap = new HashMap<String, Object>();
+		
+		//총 방문자
+		int allEnterCount = adminDAO.allEnterCount();
+		//금일 방문자
+		int todayEnterCount = adminDAO.todayEnterCount();
+		//저장된 회사 소개 글 수
+		int countAllIntro = adminDAO.countAllIntro();
+		//고객 문의 글 수
+		int countAllQna = adminDAO.countAllQna();
+		//총 카탈로그
+		int countAllCatal = adminDAO.countAllCatal();
+		//총 아이템메뉴 수
+		int countAllMenuItem = adminDAO.countAllMenuItem();
+		
+		resultMap.put("allEnterCount", allEnterCount);
+		resultMap.put("todayEnterCount", todayEnterCount);
+		resultMap.put("countAllIntro", countAllIntro);
+		resultMap.put("countAllQna", countAllQna);
+		resultMap.put("countAllCatal", countAllCatal);
+		resultMap.put("countAllMenuItem", countAllMenuItem);
+		
+		return resultMap;
+	}
+
+	@Override
 	public List<Map<String, Object>> openIntro() {
 
 		List<Map<String, Object>> list = adminDAO.openIntro();
@@ -139,6 +166,12 @@ public class AdminServiceImpl implements AdminService {
 			}
 		}
 	}
+	
+	//메뉴 삭제
+	@Override
+	public void deleteItem(String iDX) {
+		adminDAO.deleteItem(iDX);
+	}
 
 	//메뉴 사진 삭제
 	@Override
@@ -209,7 +242,34 @@ public class AdminServiceImpl implements AdminService {
 		adminDAO.deleteCatalogue(iDX);
 		
 	}
+
 	
+	//ItemAdminPage 출력정보 가져오기
+	@Override
+	public Map<String, Object> getItemAdminpageData() {
+		Map<String, Object>resultMap = new HashMap<String, Object>();
+		int countAllCatal = adminDAO.countAllCatal();
+		int deletedCatal = adminDAO.deletedCatal();
+		int showingCatal = countAllCatal - deletedCatal;
+		
+		resultMap.put("countAllCatal", countAllCatal);
+		resultMap.put("deletedCatal", deletedCatal);
+		resultMap.put("showingCatal", showingCatal);
+		resultMap.put("latlyUpdateCatal", adminDAO.latlyUpdateCatal());
+		
+		int countAllMenuItem = adminDAO.countAllMenuItem();
+		int deletedMenu = adminDAO.deletedMenu();
+		int showingMenu = countAllMenuItem - deletedMenu;
+		
+		resultMap.put("countAllMenuItem", countAllMenuItem);
+		resultMap.put("deletedMenu", deletedMenu);
+		resultMap.put("showingMenu", showingMenu);
+		resultMap.put("latlyUpdateMenu", adminDAO.latalyUpdateMenu());
+		
+		return resultMap;
+	}
 	
 	
 }
+
+

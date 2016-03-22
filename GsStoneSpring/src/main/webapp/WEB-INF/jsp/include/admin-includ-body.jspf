@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<a href="javascript:history.back()" class="btn btn-primary btn-sm">이전 페이지</a>
+				<a href="/admin/main.gs" class="btn btn-primary btn-sm">메인화면</a>
+			</div>
         </div>
+ 
     </div>
   </body>

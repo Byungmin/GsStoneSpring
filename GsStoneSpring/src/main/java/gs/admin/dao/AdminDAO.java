@@ -127,6 +127,50 @@ public class AdminDAO extends AbstractDAO {
 		update("admin.deleteCatalogue", iDX);
 	}
 
+	public int countAllCatal() {
+		return (Integer) selectOne("admin.countAllCatal");
+	}
+
+	public int deletedCatal() {
+		return (Integer) selectOne("admin.deletedCatal");
+	}
+
+	public Object latlyUpdateCatal() {
+		return selectOne("admin.latlyUpdateCatal");
+	}
+
+	public int countAllMenuItem() {
+		return (Integer)selectOne("admin.countAllMenuItem");
+	}
+
+	public int deletedMenu() {
+		return (Integer)selectOne("admin.deletedMenu");
+	}
+
+	public Object latalyUpdateMenu() {
+		return selectOne("admin.latalyUpdateMenu");
+	}
+
+	public void deleteItem(String iDX) {
+		update("admin.deleteItem", iDX);
+	}
+
+	public int countAllQna() {
+		return (Integer)selectOne("admin.countAllQna");
+	}
+
+	public int countAllIntro() {
+		return (Integer)selectOne("admin.countAllIntro");
+	}
+
+	public int allEnterCount() {
+		return (Integer)selectOne("admin.allEnterCount");
+	}
+
+	public int todayEnterCount() {
+		return (Integer)selectOne("admin.todayEnterCount");
+	}
+
 
 	
 

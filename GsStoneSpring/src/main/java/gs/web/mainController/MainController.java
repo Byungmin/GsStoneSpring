@@ -10,22 +10,33 @@ public class MainController {
 
 	Logger log = Logger.getLogger(this.getClass());
 
-	//introPage 
+	//introPage
+	@RequestMapping(value="/intro.gs")
+	public String introPage() throws Exception{
+		return "/customView/introPage";
+	}
+	
+	//item
+	@RequestMapping(value="/cataloguePage.gs")
+	public String cataloguePage() throws Exception{
+		return "/customView/cataloguePage";
+	}
+	
 	@RequestMapping(value="/item.gs")
 	public String itemPage() throws Exception{
-		return "/customView/item";
+		return "/customView/itemPage";
 	}
 
 	//고객문의 페이지
 	@RequestMapping(value="/customer.gs")
 	public String customerPage() throws Exception{
-		return "/customView/customer";
+		return "/customView/customerPage";
 	}
 	
 	//직원로그인 페이지
 	@RequestMapping(value="/login.gs")
 	public String adminLogin()throws Exception{
-		return "/adminView/adminLogin";
+		return "/customView/loginPage";
 	}
 	
 
