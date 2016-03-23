@@ -8,6 +8,9 @@
 
 
 	<!-- variable jsp template  -->
+	<c:if test="${empty sessionScope.sessionMap}">
+		<jsp:forward page="/login.gs"></jsp:forward>
+	</c:if>
 	
 	<!-- request page file name for move -->
 	<!-- default page is overview.jsp -->

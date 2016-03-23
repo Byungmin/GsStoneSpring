@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -55,6 +56,11 @@ public class CommonController {
 		
 	}
 	
+	@RequestMapping(value="/common/enterCounting.gs")
+	public String enterCounting(@RequestParam String time){
+		commonService.enterCounting(time);
+		return "redirect:/cataloguePage.gs";
+	}
 	
 	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -15,7 +16,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/item.gs">GSSTONE 홈페이지</a></li>
+					<li><a href="/cataloguePage.gs">GSSTONE 홈페이지</a></li>
 
 					<li><a id="dLabel" data-target="#" href="#"
 						data-toggle="dropdown" role="button" aria-haspopup="true"

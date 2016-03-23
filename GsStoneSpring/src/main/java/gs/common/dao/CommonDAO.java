@@ -13,4 +13,16 @@ public class CommonDAO extends AbstractDAO {
 		return (Map<String, Object>)selectOne("common.selectFileInfo", map);
 	}
 
+	public String checkCount(String time) {
+		return (String)selectOne("common.checkCount", time);
+	}
+
+	public void insertCount(String time) {
+		insert("common.insertCount", time);
+	}
+
+	public void updateCount(Map<String, Object> paraMap) {
+		update("common.updateCount", paraMap);
+	}
+
 }

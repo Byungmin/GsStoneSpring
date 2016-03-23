@@ -15,8 +15,43 @@
     ]]>
 	</select>
 
-
-
+	<select id="checkCount" parameterType="string" resultType="string">
+		<![CDATA[
+			select 
+				count
+			from 
+				entercounting 
+			where 
+				date=#{time}
+		]]>
+	</select>
+	
+	<insert id="insertCount" parameterType="string">
+		<![CDATA[
+			insert into entercounting
+				(
+					date,
+					count
+				) 
+				values
+				(
+					#{time},
+					1
+				)
+		]]>
+	</insert>
+	
+	<update id="updateCount" parameterType="hashmap">
+		<![CDATA[
+			update 
+				entercounting 
+			set 
+				count = #{icount} 
+			where 
+				date = #{time}
+		]]>
+	</update>
+	
 </mapper>
 
 

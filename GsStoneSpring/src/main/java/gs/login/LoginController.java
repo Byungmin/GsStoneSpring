@@ -10,6 +10,7 @@ import gs.login.service.LoginService;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +30,7 @@ public class LoginController {
 		boolean isLogin = (Boolean) resultLoginInfo.get("isLogin");
 		
 		//mv.addobject
-		mv.addObject("login", resultLoginInfo);
+		mv.addObject("resultLoginInfo", resultLoginInfo);
 		
 		//세션 설정
 		if(isLogin){

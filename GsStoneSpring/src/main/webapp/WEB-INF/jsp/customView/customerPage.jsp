@@ -59,8 +59,9 @@
 				</div>
 			</form>
 			<label class="col-sm-2 control-label"></label><p id="msg" style="color: red; font-weight: bold;" ></p><br>
-		<label class="col-sm-2 control-label"></label><button class="btn btn-primary" id="addFile">파일 추가</button> <button id="customerBtn" class="btn btn-primary">전송하기</button>
-			<button type="reset" class="btn btn-primary">다시쓰기</button>
+		<label class="col-sm-2 control-label"></label><button class="btn btn-primary" id="addFile">파일 추가</button><br><br>
+		<label class="col-sm-2 control-label"></label><button id="customerBtn" class="btn btn-primary">전송 하기</button>
+														<button type="reset" class="btn btn-primary">다시쓰기</button>
 		
 			
 			
