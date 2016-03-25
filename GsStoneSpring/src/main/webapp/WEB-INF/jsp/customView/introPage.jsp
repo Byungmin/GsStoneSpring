@@ -27,7 +27,7 @@
 				
 			
 			</div>
-			<div id="loginPage"><blockquote class="blockquote-reverse">GS stone&brick 대표</blockquote></div>
+			<blockquote class="blockquote-reverse">GS stone&brick 대표</blockquote>
 		</div>
 		<div class="page-header"></div>
 	</div>
@@ -36,11 +36,6 @@
 	<%@ include file="/WEB-INF/jsp/include/bootstrap-basic-body.jspf"%>
 	<script>
 	$(document).ready(function(){
-		$("#loginPage").on("dblclick",function(e){
-			e.preventDefault();
-			location.replace("/login.gs");
-		});
-		
 		$.ajax({
 			type:'post',
 			url:"/customer/getIntro.gs",

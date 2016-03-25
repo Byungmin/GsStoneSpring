@@ -44,7 +44,7 @@
             STORED_FILE_NAME,
             ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
         FROM
-            qna_FILE
+            qna_file
         WHERE
             BOARD_IDX = #{IDX}
             AND DEL_GB = 'N'
@@ -134,14 +134,14 @@
 			SELECT 
 				*
 			FROM 
-				INTRO_FILE		
+				intro_file		
 		]]>
 	</select>
 
 	<insert id="insertItem" parameterType="hashmap"
 		useGeneratedKeys="true" keyProperty="IDX">
 	<![CDATA[
-			 INSERT INTO ITEM
+			 INSERT INTO item
     		(
     			TITLE,
     			PRICE,
@@ -163,7 +163,7 @@
 
 	<insert id="insertItemFile" parameterType="list">
 		<![CDATA[
-			INSERT INTO ITEM_FILE
+			INSERT INTO item_file
 			(
 				BOARD_IDX,
 				ORIGINAL_FILE_NAME,
@@ -222,7 +222,7 @@
 
 	<update id="updateItem">
 	<![CDATA[
-		UPDATE ITEM
+		UPDATE item
 		SET
 			TITLE = #{TITLE},
 			PRICE = #{PRICE},
@@ -237,7 +237,7 @@
 
 	<update id="deleteItem" parameterType="string">
 	<![CDATA[
-		UPDATE ITEM
+		UPDATE item
 		SET
 			del_gb = 'y'
 		WHERE
@@ -249,7 +249,7 @@
 
 	<update id="deleteFileList" parameterType="hashmap">
     <![CDATA[
-        UPDATE ITEM_FILE SET
+        UPDATE item_file SET
             DEL_GB = 'Y'
         WHERE
             BOARD_IDX = #{IDX}  
@@ -258,7 +258,7 @@
 
 	<update id="deletePicture" parameterType="string">
     <![CDATA[
-        UPDATE ITEM_FILE SET
+        UPDATE item_file SET
             DEL_GB = 'Y'
         WHERE
             IDX = #{IDX}  
@@ -268,7 +268,7 @@
 	<insert id="insertCatalouge" parameterType="hashmap"
 		useGeneratedKeys="true" keyProperty="IDX">
 	<![CDATA[
-			 INSERT INTO CATALOGUES
+			 INSERT INTO catalogues
     		(
     			TITLE,
     			CREA_ID
@@ -283,7 +283,7 @@
 
 	<insert id="insertCatalougeFile" parameterType="list">
 		<![CDATA[
-			INSERT INTO CATALOGUES_FILE
+			INSERT INTO catalogues_file
 			(
 				BOARD_IDX,
 				ORIGINAL_FILE_NAME,
@@ -307,7 +307,7 @@
         SELECT
             *
         FROM
-            CATALOGUES
+            catalogues
         WHERE
         	DEL_GB = 'N'
         ORDER BY IDX DESC
@@ -319,7 +319,7 @@
 			SELECT 
 				*
 			FROM 
-				CATALOGUES_FILE	
+				catalogues_file	
 			WHERE
 				BOARD_IDX=#{boardIDX}
 				AND DEL_GB = 'N' 
@@ -369,7 +369,7 @@
 
 	<update id="deleteCatalogueFileList" parameterType="hashmap">
     <![CDATA[
-        UPDATE catalogues_FILE SET
+        UPDATE catalogues_file SET
             DEL_GB = 'Y'
         WHERE
             BOARD_IDX = #{IDX}  
@@ -378,7 +378,7 @@
 
 	<update id="updateCatalogueFile" parameterType="hashmap">
     <![CDATA[
-        UPDATE catalogues_FILE SET
+        UPDATE catalogues_file SET
             DEL_GB = 'N'
         WHERE
             IDX = #{FILE_IDX}   
@@ -397,20 +397,20 @@
 	<select id="countAllCatal" resultType="int">
 	<![CDATA[
 		SELECT 	COUNT(IDX)
-		FROM CATALOGUES
+		FROM catalogues
 	]]>
 	</select>
 	<select id="deletedCatal" resultType="int">
 	<![CDATA[
 		SELECT 	COUNT(IDX)
-		FROM CATALOGUES
+		FROM catalogues
 		WHERE DEL_GB = 'Y'
 	]]>
 	</select>
 	<select id="latlyUpdateCatal" resultType="object">
 	<![CDATA[
 		SELECT 	max(crea_dtm)
-		FROM CATALOGUES
+		FROM catalogues
 	]]>
 	</select>
 

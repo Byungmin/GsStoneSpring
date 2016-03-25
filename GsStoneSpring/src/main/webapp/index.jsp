@@ -5,6 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="naver-site-verification" content="57e5dbaafd6248085299cfa9cb54134eeb206dcc"/>
+<meta property="og:type" content="website">
+<meta property="og:title" content="GSSTONE">
+<meta property="og:description" content="중국 현지 고벽돌, 고벽돌 타일, 홍고벽돌, 청고벽돌, 모노타일 제작 공급업체">
+<meta property="og:image" content="http://www.gsstone.net/resources/upload/f77e8becaf5149d980c77b0fddebffe2.png">
+<meta property="og:url" content="http://www.gsstone.net/">
+<meta name="description" content="중국 현지 고벽돌, 고벽돌 타일, 홍고벽돌, 청고벽돌, 모노타일 제작 공급업체">
+
 <title>GS STONE&BRICK</title>
 	<%
 	//접속 게이트

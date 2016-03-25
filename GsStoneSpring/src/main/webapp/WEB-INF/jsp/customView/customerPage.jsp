@@ -83,6 +83,7 @@
 				e.preventDefault();
 				if($("#CREA_ID").val()==null||$("#CREA_ID").val()==""||$("#customerContact").val()==null||$("#customerContact").val()==""){$("#msg").text("이름과 연락처는 필수 입력 사항입니다."); return false;}
 				else{
+				alert("접수되었습니다.");
 				var comSubmit = new ComSubmit("customerfr");
 				comSubmit.setUrl("<c:url value='/qna/insertQna.gs'/>");
 				comSubmit.submit();

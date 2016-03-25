@@ -42,7 +42,7 @@
 		SELECT
 			*
 		FROM
-			ITEM
+			item
 		WHERE
 			IDX=#{IDX}
 	]]>

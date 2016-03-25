@@ -10,7 +10,7 @@
                 TITLE,
                 CREA_DTM
             FROM
-                QNA_BOARD
+                qna_board
             WHERE
                 DEL_GB = 'N'
             ORDER BY IDX DESC
@@ -21,7 +21,7 @@
 			SELECT 
 				*
     		FROM
-    			QNA_BOARD
+    			qna_board
     		WHERE
     			IDX = #{IDX}
     		AND
@@ -36,7 +36,7 @@
 				ORIGINAL_FILE_NAME,    	
     			ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
     		FROM
-    			QNA_FILE
+    			qna_file
     		WHERE
     			BOARD_IDX = #{IDX}
     		AND
@@ -48,7 +48,7 @@
     <insert id="insertQna" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
     
     	<![CDATA[
-    		INSERT INTO QNA_BOARD
+    		INSERT INTO qna_board
     		(
     			TITLE,
     			CONTENTS,
@@ -66,7 +66,7 @@
     </insert>
     <insert id="insertFile" parameterType="list">
 		<![CDATA[
-			INSERT INTO QNA_FILE
+			INSERT INTO qna_file
 			(
 				BOARD_IDX,
 				ORIGINAL_FILE_NAME,

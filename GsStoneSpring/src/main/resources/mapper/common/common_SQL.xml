@@ -9,7 +9,7 @@
             STORED_FILE_NAME,
             ORIGINAL_FILE_NAME
         FROM
-            QNA_FILE
+            qna_file
         WHERE
             IDX = #{IDX}
     ]]>
