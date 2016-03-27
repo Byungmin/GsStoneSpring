@@ -149,12 +149,14 @@ public class AdminController {
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_menu";
 	}
 	
+//제품 사진 삭제 
 	@RequestMapping(value="/deletePicture.gs")
 	public String deletePicture(@RequestParam String BOARD_IDX, @RequestParam String IDX){
 		adminService.deletePicture(IDX);
 		return "redirect:/admin/main.gs?page=/adminForm/form_Detail_item_menu&IDX="+ BOARD_IDX;
 	}
 	
+//카탈로그 추가
 	@RequestMapping(value="/insertCatalogue.gs")
 	public String insertCatalogue(CommandMap map, HttpServletRequest request)throws Exception{
 		adminService.insertCatalouge(map.getMap(), request);
@@ -168,17 +170,24 @@ public class AdminController {
 		return adminService.openCatalogue();
 	}
 
+
+//카탈로그 추가
+
 	@RequestMapping(value="/getCatalogueDetail.gs")
 	@ResponseBody
 	public Map<String, Object> getCatalogueDetail(@RequestParam String IDX){
 		return adminService.getCatalogueDetail(IDX); 
 	} 
+
+//카탈로그 수정
 	
 	@RequestMapping(value="/catalogueUpdate.gs")
 	public String updateCatalogue(CommandMap map, HttpServletRequest request) throws Exception{
 		adminService.updateCatalogue(map.getMap(),request);
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_catalogue";
 	}
+
+//카탈로그 삭제
 	
 	@RequestMapping(value="/deleteCatalogue.gs")
 	public String deleteCatalogue(@RequestParam String IDX){
@@ -186,17 +195,21 @@ public class AdminController {
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_catalogue";
 	}
 	
+//제품 정보 가져오기 (관리자 뷰)
 	@RequestMapping(value="/getItemAdminPageData.gs")
 	@ResponseBody
 	public Map<String, Object> getItemAdminPageData(){
 		return adminService.getItemAdminpageData();
 	}
 	
+//제품 삭제
 	@RequestMapping(value="/deleteItem.gs")
 	public String deleteItem(@RequestParam String IDX){
 		adminService.deleteItem(IDX);
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_menu";
 	}
+
+//어드민뷰메인 홈페이지 정보들 가져오기
 
 	@RequestMapping(value="/getMainInfo.gs")
 	@ResponseBody
