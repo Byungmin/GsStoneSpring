@@ -70,12 +70,13 @@ public class AdminController {
 		return resultList;
 	}
 	
-	//introChangeNowShoing
+	//introChangeNowShoing 어드민 페이지 회사소개 '게시하기'버튼 클릭시
 	@RequestMapping(value="/introChangeNowShoing.gs")
 	public void introChangeNowShoing(CommandMap commandMap){
 		adminService.introChangeNowShowing(commandMap.getMap());
 	}
 	
+    //회사소개 글 추가
 	@RequestMapping(value="/insertIntro.gs")
 	public String insertIntro(CommandMap commandMap,HttpServletRequest request){
 		try {
@@ -118,13 +119,14 @@ public class AdminController {
 		adminService.deleteQna(commandMap.getMap());
 	}
 	
-//아이템 메뉴
+//아이템 메뉴 추가
 	@RequestMapping(value="/insertItem.gs")
 	public String insertItem(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		adminService.insertIt(commandMap.getMap(), request);
 		return "redirect:/admin/main.gs?page=/adminForm/form_item_menu";
 	}
 	
+//제품메뉴리스트 가져오기
 	@RequestMapping(value="/getItemList.gs")
 	@ResponseBody
 	public List<Map<String, Object>> getItemList() throws IOException{
@@ -133,13 +135,14 @@ public class AdminController {
 		return resultList;
 	}
 	
-	
+	//메뉴 상세보기
 	@RequestMapping(value="/getItemDetail.gs")
 	@ResponseBody
 	public Map<String, Object> getItemDetail(@RequestParam String IDX){
 		return adminService.getItemDetail(IDX); 
 	} 
 	
+//제품 수정
 	@RequestMapping(value="/updateItem.gs")
 	public String updateItem(CommandMap map, HttpServletRequest request) throws Exception{
 		adminService.updateItem(map.getMap(),request);
